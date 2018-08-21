@@ -1,0 +1,8 @@
+//
+// Created by Kostiantyn MYKHAILENKO on 8/19/18.
+//
+
+#ifndef NIBBLER_INIBDISPLAY_HPP
+#define NIBBLER_INIBDISPLAY_HPP
+
+#endif //NIBBLER_INIBDISPLAY_HPP
