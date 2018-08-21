@@ -5,10 +5,10 @@
 #ifndef NIBBLER_GAME_HPP
 #define NIBBLER_GAME_HPP
 
-
 class Game {
-
+public:
+    Game();
+    ~Game();
 };
-
 
 #endif //NIBBLER_GAME_HPP
