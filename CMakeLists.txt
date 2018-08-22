@@ -8,6 +8,6 @@ set(SDL2_LIBRARY ~/.brew/lib/)
 include_directories(${SDL2_INCLUDE_DIR})
 link_directories(${SDL2_LIBRARY})
 
-add_executable(Nibbler main.cpp Game_sdl.hpp Game_sdl.cpp)
+add_executable(Nibbler main.cpp Game_sdl.hpp Game_sdl.cpp TextureManager.cpp TextureManager.hpp GameObj_sdl.cpp GameObj_sdl.hpp Map.cpp Map.hpp)
 
 target_link_libraries(Nibbler -lSDL2 -lSDL2_image)

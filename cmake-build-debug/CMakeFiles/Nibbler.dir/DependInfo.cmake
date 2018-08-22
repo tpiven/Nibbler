@@ -4,7 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.cpp" "/Users/kmykhail/Desktop/Nibbler/cmake-build-debug/CMakeFiles/Nibbler.dir/GameObj_sdl.cpp.o"
   "/Users/kmykhail/Desktop/Nibbler/Game_sdl.cpp" "/Users/kmykhail/Desktop/Nibbler/cmake-build-debug/CMakeFiles/Nibbler.dir/Game_sdl.cpp.o"
+  "/Users/kmykhail/Desktop/Nibbler/Map.cpp" "/Users/kmykhail/Desktop/Nibbler/cmake-build-debug/CMakeFiles/Nibbler.dir/Map.cpp.o"
+  "/Users/kmykhail/Desktop/Nibbler/TextureManager.cpp" "/Users/kmykhail/Desktop/Nibbler/cmake-build-debug/CMakeFiles/Nibbler.dir/TextureManager.cpp.o"
   "/Users/kmykhail/Desktop/Nibbler/main.cpp" "/Users/kmykhail/Desktop/Nibbler/cmake-build-debug/CMakeFiles/Nibbler.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

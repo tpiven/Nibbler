@@ -9,8 +9,9 @@ class Game_sdl{
 private:
     bool _end_game;
     int _cnt;
+    int _width;
+    int _height;
     SDL_Window *_window;
-    SDL_Renderer *_renderer;
     SDL_Event    _event;
 public:
     Game_sdl();
@@ -20,9 +21,11 @@ public:
     void    handleEvent();
     void    update();
     void    render();
+    void    renderMap();
     void    clean();
 
     bool    running();
+    static  SDL_Renderer *renderer;
 };
 
 #endif

@@ -82,10 +82,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.cpp">
+			<Option target="Nibbler"/>
+		</Unit>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.hpp">
+			<Option target="Nibbler"/>
+		</Unit>
 		<Unit filename="/Users/kmykhail/Desktop/Nibbler/Game_sdl.cpp">
 			<Option target="Nibbler"/>
 		</Unit>
 		<Unit filename="/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp">
+			<Option target="Nibbler"/>
+		</Unit>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/Map.cpp">
+			<Option target="Nibbler"/>
+		</Unit>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/Map.hpp">
+			<Option target="Nibbler"/>
+		</Unit>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/TextureManager.cpp">
+			<Option target="Nibbler"/>
+		</Unit>
+		<Unit filename="/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp">
 			<Option target="Nibbler"/>
 		</Unit>
 		<Unit filename="/Users/kmykhail/Desktop/Nibbler/main.cpp">

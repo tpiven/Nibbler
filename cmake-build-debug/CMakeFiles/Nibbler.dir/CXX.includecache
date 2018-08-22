@@ -596,9 +596,25 @@ close_code.h
 
 /Users/kmykhail/.brew/include/SDL2/close_code.h
 
+/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.cpp
+GameObj_sdl.hpp
+/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.hpp
+TextureManager.hpp
+/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+
+/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.hpp
+Game_sdl.hpp
+/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
+
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.cpp
 Game_sdl.hpp
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
+TextureManager.hpp
+/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+GameObj_sdl.hpp
+/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.hpp
+Map.hpp
+/Users/kmykhail/Desktop/Nibbler/Map.hpp
 
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
 SDL.h
@@ -607,6 +623,24 @@ SDL_image.h
 /Users/kmykhail/Desktop/Nibbler/SDL_image.h
 iostream
 -
+
+/Users/kmykhail/Desktop/Nibbler/Map.cpp
+Map.hpp
+/Users/kmykhail/Desktop/Nibbler/Map.hpp
+TextureManager.hpp
+/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+
+/Users/kmykhail/Desktop/Nibbler/Map.hpp
+Game_sdl.hpp
+/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
+
+/Users/kmykhail/Desktop/Nibbler/TextureManager.cpp
+TextureManager.hpp
+/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+
+/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+Game_sdl.hpp
+/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
 
 /Users/kmykhail/Desktop/Nibbler/main.cpp
 Game_sdl.hpp

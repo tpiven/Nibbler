@@ -123,6 +123,33 @@ Nibbler/fast:
 	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/build
 .PHONY : Nibbler/fast
 
+GameObj_sdl.o: GameObj_sdl.cpp.o
+
+.PHONY : GameObj_sdl.o
+
+# target to build an object file
+GameObj_sdl.cpp.o:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/GameObj_sdl.cpp.o
+.PHONY : GameObj_sdl.cpp.o
+
+GameObj_sdl.i: GameObj_sdl.cpp.i
+
+.PHONY : GameObj_sdl.i
+
+# target to preprocess a source file
+GameObj_sdl.cpp.i:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/GameObj_sdl.cpp.i
+.PHONY : GameObj_sdl.cpp.i
+
+GameObj_sdl.s: GameObj_sdl.cpp.s
+
+.PHONY : GameObj_sdl.s
+
+# target to generate assembly for a file
+GameObj_sdl.cpp.s:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/GameObj_sdl.cpp.s
+.PHONY : GameObj_sdl.cpp.s
+
 Game_sdl.o: Game_sdl.cpp.o
 
 .PHONY : Game_sdl.o
@@ -149,6 +176,60 @@ Game_sdl.s: Game_sdl.cpp.s
 Game_sdl.cpp.s:
 	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/Game_sdl.cpp.s
 .PHONY : Game_sdl.cpp.s
+
+Map.o: Map.cpp.o
+
+.PHONY : Map.o
+
+# target to build an object file
+Map.cpp.o:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/Map.cpp.o
+.PHONY : Map.cpp.o
+
+Map.i: Map.cpp.i
+
+.PHONY : Map.i
+
+# target to preprocess a source file
+Map.cpp.i:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/Map.cpp.i
+.PHONY : Map.cpp.i
+
+Map.s: Map.cpp.s
+
+.PHONY : Map.s
+
+# target to generate assembly for a file
+Map.cpp.s:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/Map.cpp.s
+.PHONY : Map.cpp.s
+
+TextureManager.o: TextureManager.cpp.o
+
+.PHONY : TextureManager.o
+
+# target to build an object file
+TextureManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/TextureManager.cpp.o
+.PHONY : TextureManager.cpp.o
+
+TextureManager.i: TextureManager.cpp.i
+
+.PHONY : TextureManager.i
+
+# target to preprocess a source file
+TextureManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/TextureManager.cpp.i
+.PHONY : TextureManager.cpp.i
+
+TextureManager.s: TextureManager.cpp.s
+
+.PHONY : TextureManager.s
+
+# target to generate assembly for a file
+TextureManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Nibbler.dir/build.make CMakeFiles/Nibbler.dir/TextureManager.cpp.s
+.PHONY : TextureManager.cpp.s
 
 main.o: main.cpp.o
 
@@ -186,9 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Nibbler"
+	@echo "... GameObj_sdl.o"
+	@echo "... GameObj_sdl.i"
+	@echo "... GameObj_sdl.s"
 	@echo "... Game_sdl.o"
 	@echo "... Game_sdl.i"
 	@echo "... Game_sdl.s"
+	@echo "... Map.o"
+	@echo "... Map.i"
+	@echo "... Map.s"
+	@echo "... TextureManager.o"
+	@echo "... TextureManager.i"
+	@echo "... TextureManager.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
