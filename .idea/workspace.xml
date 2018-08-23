@@ -12,34 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4837cef-4a2b-42a0-91f9-18b445d0ee5f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/GameObj_sdl.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/GameObj_sdl.hpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Map.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Map.hpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/TextureManager.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/TextureManager.hpp" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change beforePath="$PROJECT_DIR$/Game_sdl.cpp" afterPath="$PROJECT_DIR$/Game_sdl.cpp" />
       <change beforePath="$PROJECT_DIR$/Game_sdl.hpp" afterPath="$PROJECT_DIR$/Game_sdl.hpp" />
-      <change beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
+      <change beforePath="$PROJECT_DIR$/Map.cpp" afterPath="$PROJECT_DIR$/Map.cpp" />
+      <change beforePath="$PROJECT_DIR$/Map.hpp" afterPath="$PROJECT_DIR$/Map.hpp" />
+      <change beforePath="$PROJECT_DIR$/Picture/dirt.png" afterPath="$PROJECT_DIR$/Picture/dirt.png" />
+      <change beforePath="$PROJECT_DIR$/Picture/water.png" afterPath="$PROJECT_DIR$/Picture/water.png" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/CXX.includecache" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/DependInfo.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/Game_sdl.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/Game_sdl.cpp.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/build.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/cmake_clean.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/depend.internal" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/depend.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/link.txt" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/main.cpp.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/progress.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/Game_sdl.cpp.o" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/Map.cpp.o" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Nibbler.dir/main.cpp.o" afterPath="" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Nibbler" afterPath="$PROJECT_DIR$/cmake-build-debug/Nibbler" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Nibbler.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/Nibbler.cbp" />
       <change beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change beforePath="$PROJECT_DIR$/solid.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,92 +36,16 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3147444">
+    <splitter split-orientation="horizontal" split-proportion="0.51415294">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.32861635">
+        <splitter split-orientation="horizontal" split-proportion="0.42693773">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+              <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/main.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="450">
-                      <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="Game_sdl.cpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/Game_sdl.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="325">
-                      <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-                      <folding>
-                        <element signature="e#0#23#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/Map.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="190">
-                      <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-                      <folding>
-                        <marker date="1534965353000" expanded="true" signature="2327:3349" ph="/.../" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/Map.hpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="330">
-                      <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="TextureManager.hpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="75">
-                      <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="GameObj_sdl.cpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="120">
-                      <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-                      <folding>
-                        <element signature="e#56#82#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="TextureManager.cpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/TextureManager.cpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="45">
-                      <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="GameObj_sdl.hpp" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/GameObj_sdl.hpp">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="270">
-                      <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+                    <state relative-caret-position="285">
+                      <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
                       <folding />
                     </state>
                   </provider>
@@ -145,13 +54,15 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf>
-              <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/main.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="435">
-                      <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-                      <folding />
+                    <state relative-caret-position="315">
+                      <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+                      <folding>
+                        <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -159,8 +70,8 @@
               <file leaf-file-name="TextureManager.hpp" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+                    <state relative-caret-position="255">
+                      <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -169,8 +80,8 @@
               <file leaf-file-name="Game_sdl.cpp" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/Game_sdl.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="490">
-                      <caret line="52" column="14" lean-forward="true" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+                    <state relative-caret-position="370">
+                      <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
                       <folding>
                         <element signature="e#0#23#0" expanded="true" />
                       </folding>
@@ -181,10 +92,44 @@
               <file leaf-file-name="GameObj_sdl.cpp" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="285">
-                      <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+                    <state relative-caret-position="330">
+                      <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
                       <folding>
                         <element signature="e#56#82#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Game_sdl.hpp" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/Game_sdl.hpp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="120">
+                      <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+                      <folding>
+                        <element signature="e#43#59#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/Map.hpp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="585">
+                      <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/Map.cpp">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="1140">
+                      <caret line="76" column="213" lean-forward="false" selection-start-line="76" selection-start-column="213" selection-end-line="76" selection-end-column="213" />
+                      <folding>
+                        <element signature="e#56#74#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -199,9 +144,11 @@
           <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-                  <folding />
+                <state relative-caret-position="60">
+                  <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+                  <folding>
+                    <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -219,8 +166,8 @@
           <file leaf-file-name="Game_sdl.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Game_sdl.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="518">
-                  <caret line="40" column="73" lean-forward="false" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
+                <state relative-caret-position="360">
+                  <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -231,8 +178,8 @@
           <file leaf-file-name="TextureManager.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+                <state relative-caret-position="45">
+                  <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -241,22 +188,10 @@
           <file leaf-file-name="Game_sdl.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Game_sdl.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
                   <folding>
                     <element signature="e#43#59#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Map.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="287">
-                  <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-                  <folding>
-                    <element signature="e#56#74#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -266,7 +201,7 @@
             <entry file="file://$PROJECT_DIR$/Map.hpp">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
-                  <caret line="0" column="2" lean-forward="true" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+                  <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
                   <folding />
                 </state>
               </provider>
@@ -275,8 +210,8 @@
           <file leaf-file-name="TextureManager.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TextureManager.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="60" lean-forward="true" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+                <state relative-caret-position="240">
+                  <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -292,13 +227,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GameObj_sdl.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
+          <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Map.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                <state relative-caret-position="373">
+                  <caret line="52" column="195" lean-forward="false" selection-start-line="52" selection-start-column="195" selection-end-line="52" selection-end-column="195" />
                   <folding>
-                    <element signature="e#56#82#0" expanded="true" />
+                    <element signature="e#56#74#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -311,6 +246,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>SDL2_INCLUDE_DIR</find>
+      <find>7</find>
+      <find>SDL_Del</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -322,13 +259,13 @@
         <option value="$PROJECT_DIR$/Logic_game.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/GameObj_sdl.hpp" />
-        <option value="$PROJECT_DIR$/GameObj_sdl.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/TextureManager.hpp" />
+        <option value="$PROJECT_DIR$/GameObj_sdl.cpp" />
         <option value="$PROJECT_DIR$/TextureManager.cpp" />
-        <option value="$PROJECT_DIR$/Map.hpp" />
         <option value="$PROJECT_DIR$/Game_sdl.hpp" />
         <option value="$PROJECT_DIR$/Game_sdl.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Map.hpp" />
         <option value="$PROJECT_DIR$/Map.cpp" />
       </list>
     </option>
@@ -339,9 +276,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1278" />
-    <option name="height" value="1440" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="447" />
+    <option name="y" value="78" />
+    <option name="width" value="1351" />
+    <option name="height" value="1224" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -410,28 +349,32 @@
       <workItem from="1534872871111" duration="1813000" />
       <workItem from="1534875309778" duration="2964000" />
       <workItem from="1534937351266" duration="2105000" />
-      <workItem from="1534944529502" duration="14318000" />
+      <workItem from="1534944529502" duration="14514000" />
+      <workItem from="1535007776416" duration="2193000" />
+      <workItem from="1535018722183" duration="102000" />
+      <workItem from="1535021965974" duration="5251000" />
+      <workItem from="1535030293456" duration="15790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32607000" />
+    <option name="totallyTimeSpent" value="56139000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1440" extended-state="6" />
+    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.067743205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32479882" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32040966" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29773226" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32479882" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27212876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26700804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40160936" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -451,21 +394,123 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Map.cpp</url>
-          <line>36</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>28</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Map.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#56#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/INibDisplay.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game_sdl.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game_sdl.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#43#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Map.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextureManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameObj_sdl.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding>
+            <element signature="e#56#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Map.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#56#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -473,7 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -517,7 +561,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -525,7 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -569,7 +614,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -577,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -621,7 +667,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -629,7 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -673,7 +720,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,7 +738,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -721,6 +772,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#56#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game_sdl.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#43#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextureManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -733,38 +819,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game_sdl.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="e#43#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameObj_sdl.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#56#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="60">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding>
+            <marker date="1535049683000" expanded="true" signature="708:831" ph="/.../" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game_sdl.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="40" column="73" lean-forward="false" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
+        <state relative-caret-position="360">
+          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -774,31 +842,15 @@
     <entry file="file://$PROJECT_DIR$/Map.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="true" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TextureManager.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TextureManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="60" lean-forward="true" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Map.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="41" column="33" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        <state relative-caret-position="373">
+          <caret line="52" column="195" lean-forward="false" selection-start-line="52" selection-start-column="195" selection-end-line="52" selection-end-column="195" />
           <folding>
             <element signature="e#56#74#0" expanded="true" />
           </folding>

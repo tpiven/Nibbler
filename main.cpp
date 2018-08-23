@@ -21,10 +21,10 @@ int main(int argc, char* argv[]) {
     int frameTime;
 
     Game_sdl obj;
-    obj.init("Snake", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1440, 1080, 0);
+    obj.init("Snake", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1440, 1072, 0);
     while(!obj.running()){
 
-        frameStart = SDL_GetTicks();
+        //frameStart = SDL_GetTicks();
 
         obj.handleEvent();
         obj.update();

@@ -13,6 +13,8 @@ Game_sdl::Game_sdl() :_end_game(false), _cnt(0) {
 }
 
 void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr) {
+    _width = w;
+    _height = h;
     int flags = SDL_WINDOW_SHOWN;
     if (fullscr)
         flags = SDL_WINDOW_FULLSCREEN;
@@ -32,14 +34,13 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
         std::cout << "Error Window: " << &SDL_Error << std::endl;
         return;
     }
-    renderer = SDL_CreateRenderer(_window, -1, 0);
+    renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) {
         std::cout << "Trouble wih render" << std::endl;
         return;
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 0, 0);
-    //renderMap();
     map = new Map();
 }
 
@@ -53,16 +54,12 @@ void Game_sdl::update() {
     player->Update();
 }
 
-void Game_sdl::renderMap() {
-    map = new Map();
-    map->DrawMap();
-}
-
 void Game_sdl::render() {
     SDL_RenderClear(renderer);
     map->DrawMap();
-    player->Render();
+    //player->Render();
     SDL_RenderPresent(renderer);
+    //SDL_Delay(100000);
 }
 
 void Game_sdl::clean() {

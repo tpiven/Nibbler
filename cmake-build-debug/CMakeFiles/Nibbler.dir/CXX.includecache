@@ -623,6 +623,8 @@ SDL_image.h
 /Users/kmykhail/Desktop/Nibbler/SDL_image.h
 iostream
 -
+thread
+-
 
 /Users/kmykhail/Desktop/Nibbler/Map.cpp
 Map.hpp
