@@ -5,6 +5,7 @@
 #include "SDL_image.h"
 #include <iostream>
 #include <thread>
+#include <vector>
 
 class Game_sdl{
 private:

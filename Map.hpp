@@ -40,6 +40,26 @@ private:
     SDL_Texture *road_gorisont_up;
     SDL_Texture *road_gorisont_down;
     SDL_Texture *road_center;
+
+    SDL_Texture *bloc_left_gray;
+    SDL_Texture *bloc_right_gray;
+    SDL_Texture *bloc_up_down_gray;
+
+    SDL_Texture *bloc_center_white;
+    SDL_Texture *bloc_left_white;
+    SDL_Texture *bloc_right_white;
+    SDL_Texture *bloc_up_white;
+    SDL_Texture *bloc_down_white;
+    SDL_Texture *bloc_turn3_white;
+    SDL_Texture *bloc_turn4_white;
+    SDL_Texture *bloc_turn1_white;
+    SDL_Texture *bloc_turn2_white;
+
+
+    SDL_Texture *Level1_map;
+
+
+
     int map[67][90];
 public:
     Map();

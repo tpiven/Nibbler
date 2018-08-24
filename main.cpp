@@ -15,7 +15,7 @@
 
 int main(int argc, char* argv[]) {
     int const FPS = 60;
-    int const frameDealy = 1000 / FPS;
+    int const frameDealy = 400 / FPS;
 
     uint32_t  frameStart;
     int frameTime;
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     obj.init("Snake", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1440, 1072, 0);
     while(!obj.running()){
 
-        //frameStart = SDL_GetTicks();
+        frameStart = SDL_GetTicks();
 
         obj.handleEvent();
         obj.update();

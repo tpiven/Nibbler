@@ -11,7 +11,9 @@ private:
     int xpos;
     int ypos;
     SDL_Texture *_objTexture;
-    SDL_Rect    scrR, destR;
+    std::vector<SDL_Rect>  scrR;
+    std::vector<int> body;
+    std::vector<SDL_Texture*> snakeTexture;
 public:
     GameObj_sdl(const char *texture, int x, int y);
     ~GameObj_sdl();
