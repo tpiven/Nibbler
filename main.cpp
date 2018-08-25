@@ -15,7 +15,7 @@
 
 int main(int argc, char* argv[]) {
     int const FPS = 60;
-    int const frameDealy = 400 / FPS;
+    int const frameDealy = 1000 / FPS;
 
     uint32_t  frameStart;
     int frameTime;

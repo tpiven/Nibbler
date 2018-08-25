@@ -10,15 +10,18 @@ class GameObj_sdl {
 private:
     int xpos;
     int ypos;
+    char _direction;
+    int  _body;
     SDL_Texture *_objTexture;
-    std::vector<SDL_Rect>  scrR;
-    std::vector<int> body;
+    SDL_Rect    scrR;
+    std::vector<int> _corXY;
     std::vector<SDL_Texture*> snakeTexture;
 public:
-    GameObj_sdl(const char *texture, int x, int y);
+    GameObj_sdl(const char *texture, int x, int y, char direction);
     ~GameObj_sdl();
     void    Update();
     void    Render();
+    void    setDirection(char dir);
 };
 
 

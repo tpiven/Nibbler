@@ -40,7 +40,7 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
         return;
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 1, 1);
+    player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 7, 7, 'd');
     map = new Map();
 }
 
@@ -53,7 +53,19 @@ void Game_sdl::handleEvent() {
             case SDLK_ESCAPE:
                 _end_game = true;
                 break;
-            //case SDLK_w:
+            case SDLK_w:
+                player->setDirection('w');
+                break;
+            case SDLK_s:
+                player->setDirection('s');
+                break;
+            case SDLK_d:
+                std::cout<<"COME" << std::endl;
+                player->setDirection('d');
+                break;
+            case SDLK_a:
+                player->setDirection('a');
+                break;
             default:
                 break;
         }
@@ -65,7 +77,7 @@ void Game_sdl::update() {
 }
 
 void Game_sdl::render() {
-    SDL_RenderClear(renderer);
+    //SDL_RenderClear(renderer);
     map->DrawMap();
     player->Render();
     SDL_RenderPresent(renderer);
