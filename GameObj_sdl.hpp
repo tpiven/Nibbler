@@ -11,7 +11,7 @@ private:
     int xpos;
     int ypos;
     char _direction;
-    int  _body;
+
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
     std::vector<int> _corXY;
@@ -22,6 +22,7 @@ public:
     void    Update();
     void    Render();
     void    setDirection(char dir);
+    bool  _turn;
 };
 
 

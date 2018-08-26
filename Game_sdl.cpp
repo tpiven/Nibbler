@@ -40,7 +40,7 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
         return;
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 7, 7, 'd');
+    player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 200, 7, 'd');
     map = new Map();
 }
 
@@ -77,10 +77,12 @@ void Game_sdl::update() {
 }
 
 void Game_sdl::render() {
-    //SDL_RenderClear(renderer);
+    SDL_RenderClear(renderer);
     map->DrawMap();
     player->Render();
     SDL_RenderPresent(renderer);
+    if (player->_turn)
+        SDL_Delay(50);
 }
 
 void Game_sdl::clean() {
