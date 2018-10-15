@@ -11,11 +11,13 @@ private:
     int xpos;
     int ypos;
     char _direction;
-
+    int high;
+    int low;
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
     std::vector<int> _corXY;
-    std::vector<SDL_Texture*> snakeTexture;
+    std::map<int, std::pair<int, int>>_cors;
+    std::map<int, SDL_Texture*> snakeTexture;
 public:
     GameObj_sdl(const char *texture, int x, int y, char direction);
     ~GameObj_sdl();

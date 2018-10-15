@@ -81,8 +81,6 @@ void Game_sdl::render() {
     map->DrawMap();
     player->Render();
     SDL_RenderPresent(renderer);
-    if (player->_turn)
-        SDL_Delay(50);
 }
 
 void Game_sdl::clean() {

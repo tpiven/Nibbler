@@ -606,16 +606,6 @@ TextureManager.hpp
 Game_sdl.hpp
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
 
-/Users/kmykhail/Desktop/Nibbler/Game_sdl.cpp
-Game_sdl.hpp
-/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
-TextureManager.hpp
-/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
-GameObj_sdl.hpp
-/Users/kmykhail/Desktop/Nibbler/GameObj_sdl.hpp
-Map.hpp
-/Users/kmykhail/Desktop/Nibbler/Map.hpp
-
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
 SDL.h
 /Users/kmykhail/Desktop/Nibbler/SDL.h
@@ -627,26 +617,10 @@ thread
 -
 vector
 -
-
-/Users/kmykhail/Desktop/Nibbler/Map.cpp
-Map.hpp
-/Users/kmykhail/Desktop/Nibbler/Map.hpp
-TextureManager.hpp
-/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
-
-/Users/kmykhail/Desktop/Nibbler/Map.hpp
-Game_sdl.hpp
-/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
-
-/Users/kmykhail/Desktop/Nibbler/TextureManager.cpp
-TextureManager.hpp
-/Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
+map
+-
 
 /Users/kmykhail/Desktop/Nibbler/TextureManager.hpp
-Game_sdl.hpp
-/Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
-
-/Users/kmykhail/Desktop/Nibbler/main.cpp
 Game_sdl.hpp
 /Users/kmykhail/Desktop/Nibbler/Game_sdl.hpp
 
