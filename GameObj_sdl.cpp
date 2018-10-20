@@ -76,6 +76,7 @@ void GameObj_sdl::Update() {
         _turn = true;
     }*/
     size_t back = _cors.size() - 1;
+    std::cout << "Direction: " << _direction << " TURN: " << _turn << std::endl;
     if ((_direction == 'w' || _direction == 's') && ((_cors[back].first == _cors[back - 1].first) && (_cors[back].second != _cors[back-1].second))){
         ypos = (_direction == 'w') ? -1 : 1;
         xpos = 0;
@@ -91,212 +92,145 @@ void GameObj_sdl::Update() {
 //first == y
 //second == x
 
+bool GameObj_sdl::AreSnakeBlocksEqual() {
+    if (_cors[0].first == (--_cors.end())->second.first || _cors[0].second == (--_cors.end())->second.second)
+        return true;
+    return false;
+}
+
+void GameObj_sdl::turnOnX(size_t &cnt_cors) {
+    if (!cnt_cors && low){
+        if (low - 1 == 0){
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
+            scrR.w = scrR.h = 16;
+            low = 0;
+        }
+        else{
+            scrR.x = (_direction == 's') ? (++_cors[cnt_cors].second) : (--_cors[cnt_cors].second);
+            scrR.y = _cors[cnt_cors + 1].first;
+            scrR.w = --low;
+            scrR.h = 16;
+        }
+    }
+    else if (!low){
+        scrR.h = scrR.w = 16;
+        _cors[cnt_cors].second = scrR.x = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].second : _cors[cnt_cors + 1].second;
+        if (cnt_cors == _cors.size() - 1)
+            _cors[cnt_cors].first = scrR.y = (_direction == 's') ? _cors[cnt_cors].first + 16 : _cors[cnt_cors].first - 16;
+        else
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
+        (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
+        _turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+    }
+    else{
+        if (cnt_cors == _cors.size() - 1){
+            scrR.x = _cors[cnt_cors].second;
+            scrR.y = _cors[cnt_cors].first;
+            scrR.w = 16;
+            scrR.h = (_direction == 's') ?  ++high : --high;
+        }
+        else {
+            scrR.w = scrR.h = 16;
+            if (_cors[cnt_cors].first == _cors[cnt_cors + 1].first && _cors[cnt_cors].second != _cors[cnt_cors + 1].second) {
+                scrR.x = _cors[cnt_cors].second;
+                scrR.y = _cors[cnt_cors + 1].first;
+            }
+            else if (_cors[cnt_cors].first != _cors[cnt_cors + 1].first && _cors[cnt_cors].second == _cors[cnt_cors + 1].second){
+                scrR.x = _cors[cnt_cors + 1].second;
+                scrR.y = _cors[cnt_cors].first;
+            }
+        }
+    }
+}
+
+void GameObj_sdl::turnOnY(size_t &cnt_cors) {
+    if (!cnt_cors && high) {
+        if (high - 1 == 0){
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
+        }
+        else{
+            scrR.x = _cors[cnt_cors + 1].second;
+            scrR.y = (_direction == 'd') ? (++_cors[cnt_cors].first) : (--_cors[cnt_cors].first);
+            scrR.w = 16;
+            scrR.h = --high;
+        }
+    }
+    else if (!high) {
+        scrR.w = scrR.h = 16;
+        _cors[cnt_cors].first = scrR.y = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].first : _cors[cnt_cors + 1].first;
+        if (cnt_cors == _cors.size() - 1)
+            _cors[cnt_cors].second = scrR.x = (_direction == 'd') ? _cors[cnt_cors].second + 16 : _cors[cnt_cors].second - 16;
+        else
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
+        (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
+        _turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+    }
+    else{
+        if (cnt_cors == _cors.size() - 1){
+            scrR.x = _cors[cnt_cors].second;
+            scrR.y = _cors[cnt_cors].first;
+            scrR.w = (_direction == 'd') ?  ++high : --high;
+            scrR.h = 16;
+        }
+        else{
+            scrR.w = scrR.h = 16;
+            if (_cors[cnt_cors].first != _cors[cnt_cors + 1].first && _cors[cnt_cors].second == _cors[cnt_cors + 1].second) {
+                scrR.x = _cors[cnt_cors + 1].second;
+                scrR.y = _cors[cnt_cors].first;
+            }
+            else if (_cors[cnt_cors].first == _cors[cnt_cors + 1].first && _cors[cnt_cors].second != _cors[cnt_cors + 1].second){
+                scrR.x = _cors[cnt_cors].second;
+                scrR.y = _cors[cnt_cors + 1].first;
+            }
+        }
+    }
+}
+
+void GameObj_sdl::moveOnY(size_t &cnt_cors) {
+    if (!_turn && !AreSnakeBlocksEqual())
+        _turn = true;
+    if (!_turn){
+        if (cnt_cors == _cors.size() - 1){
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors].second + xpos;
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors].first + ypos;
+        }else {
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second - 16 + 1;
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
+        }
+    }
+    else if (_turn) {
+        turnOnX(cnt_cors);
+    }
+}
+
+void GameObj_sdl::moveOnX(size_t & cnt_cors) {
+    if (!_turn && !AreSnakeBlocksEqual())
+        _turn = true;
+    if (!_turn){
+        if (cnt_cors == _cors.size() - 1){
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors].second + xpos;
+            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors].first + ypos;
+        }else {
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
+            _cors[cnt_cors].first = scrR.y = std::abs(_cors[cnt_cors + 1].first - 16 + 1); //can be trouble with (STD::ABS())
+        }
+    }
+    else if (_turn) {
+        turnOnY(cnt_cors);
+    }
+}
+
+
 void GameObj_sdl::Render() {
     for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
-        if (cnt_cors == _cors.size() -1 || ((_cors[cnt_cors].first == _cors[cnt_cors + 1].first)  && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))//(y(0)==y(1) && x(0) != x(1) )
-        {
-            if (!_turn){
-                if (cnt_cors == _cors.size() - 1){
-                    _cors[cnt_cors].second = scrR.x = _cors[cnt_cors].second + xpos;
-                    _cors[cnt_cors].first = scrR.y = _cors[cnt_cors].first + ypos;
-                }else {
-                    _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second - 16 + 1;
-                    _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
-                }
-            }
-            else if (_turn){
-                if (!cnt_cors && low){
-
-                    if (low - 1 == 0){
-                       _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
-                       _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
-                       scrR.h = scrR.w = 16;
-                       low = 0;
-                    }
-                    else{
-                        scrR.x = ++_cors[cnt_cors].second;
-                        scrR.y = _cors[cnt_cors + 1].first;
-                        scrR.w = --low;
-                        scrR.h = 16;
-                    }
-                }
-                else if (!low){
-                    scrR.h = scrR.w = 16;
-                    _cors[cnt_cors].second = scrR.x = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].second : _cors[cnt_cors + 1].second;
-                    if (cnt_cors == _cors.size() - 1)
-                        _cors[cnt_cors].first = scrR.y = (_direction == 's') ? _cors[cnt_cors].first + 16 : _cors[cnt_cors].first - 16;
-                    else
-                        _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
-                    if (cnt_cors == _cors.size() - 1){
-                        low = high = 16;
-                    }
-                }
-                else{
-                    if (cnt_cors == _cors.size() - 1){
-                        scrR.x = _cors[cnt_cors].second;
-                        scrR.y = _cors[cnt_cors].first;
-                        scrR.w = 16;
-                        scrR.h = (_direction == 's') ?  ++high : --high;
-                    }
-                    else {
-                        scrR.w = scrR.h = 16;
-                        scrR.x = _cors[cnt_cors].second;
-                        scrR.y = _cors[cnt_cors + 1].first;
-                    }
-                }
-            }
-        }
-        else if ((_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)){
-            if (!_turn){
-                if (cnt_cors == _cors.size() - 1){
-                    _cors[cnt_cors].second = scrR.x = _cors[cnt_cors].second + xpos;
-                    _cors[cnt_cors].first = scrR.y = _cors[cnt_cors].first + ypos;
-                }else {
-                    _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
-                    _cors[cnt_cors].first = scrR.y = std::abs(_cors[cnt_cors + 1].first - 16 + 1);
-                }
-            }
-            else if (_turn){
-                if (!cnt_cors && high){
-                    scrR.x = _cors[cnt_cors + 1].second;
-                    scrR.y = ++_cors[cnt_cors].first;
-                    scrR.w = 16;
-                    scrR.h = --high;
-                }
-                else if (!high){
-                    scrR.w = scrR.h = 16;
-                    if (cnt_cors == _cors.size() - 1)
-                        _cors[cnt_cors].second = scrR.x = (_direction == 'd') ?_cors[cnt_cors].second + 16 : _cors[cnt_cors].second - 16;
-                    else
-                        _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
-                    //_cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second
-                    _cors[cnt_cors].first = scrR.y = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].first : _cors[cnt_cors + 1].first;
-                    _turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
-                    low = high = 16;
-                }
-                else{
-                    if (cnt_cors == _cors.size() - 1){
-                        scrR.x = _cors[cnt_cors].second;
-                        scrR.y = _cors[cnt_cors].first;
-                        scrR.w = (_direction == 'd') ? ++low : --low;
-                        scrR.h = 16;
-                    }
-                    else {
-                        scrR.w =scrR.h = 16;
-                        scrR.x = _cors[cnt_cors + 1].second;
-                        if (low)
-                            _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
-                        else
-                            scrR.y = _cors[cnt_cors].first;
-                    }
-                }
-            }
-        }
+        if (cnt_cors == _cors.size() - 1 || ((_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))
+            moveOnY(cnt_cors);
+        else if ((_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second))
+            moveOnX(cnt_cors);
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
-    /*for (size_t cnt_arr = _corXY.size() - 1, cnt_s = snakeTexture.size() - 1;  cnt_s != 0 ; cnt_arr -= 2, --cnt_s) {
-        if ((_corXY[cnt_arr - 1] == _corXY[cnt_arr - 3]) && (_corXY[cnt_arr] != _corXY[cnt_arr - 2])) {
-            if (!_turn) {
-                _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2] - 16 + 1;
-                _corXY[cnt_arr - 1] = scrR.y = _corXY[cnt_arr - 3];
-            }
-            else {
-                if (low == 1) {
-                    scrR.h = 16;
-                    scrR.w = 16;
-                    _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2];
-                    _corXY[cnt_arr - 1] = scrR.y = _corXY[cnt_arr - 3];
-                }
-                else if (cnt_arr == _corXY.size() - 1) {
-                    scrR.x = ++_corXY[cnt_arr];
-                    scrR.y = _corXY[cnt_arr - 1];
-                    scrR.w = --low;
-                    scrR.h = 16;
-                }
-                else {
-                    scrR.x = _corXY[cnt_arr];
-                    scrR.y = _corXY[cnt_arr - 1];
-                    scrR.h = scrR.w = 16;
-                }
-            }
-        }
-        else if ((_corXY[cnt_arr - 1] != _corXY[cnt_arr - 3]) && (_corXY[cnt_arr] == _corXY[cnt_arr - 2])){
-            if (!_turn){
-                _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2];
-                _corXY[cnt_arr - 1] = scrR.y = std::abs(_corXY[cnt_arr - 3] - 16 + 1);
-            }
-            else{
-                _corXY[0] = scrR.y = _corXY[0] + ypos;
-                _corXY[1] = scrR.x = _corXY[1] + ((xpos >= 0) ? 16 : -16);
-            }
-        }
-        SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
-    }
-    if (!_turn){
-        _corXY[0] = scrR.y = _corXY[0] + ypos;
-        _corXY[1] = scrR.x = _corXY[1] + xpos;
-    }
-    else if (_turn){
-        if (low != 1){
-            scrR.x = _corXY[1];
-            scrR.y = _corXY[0];
-            scrR.h = ++high;
-            scrR.w = 16;
-        }
-        else if (ypos != 0){
-            _corXY[0] = scrR.y = _corXY[0] + ((ypos > 0) ? 16 : -16);
-            _corXY[1] = scrR.x = _corXY[1] + xpos;
-           low = high =  scrR.h = scrR.w = 16;
-        }
-        else if (xpos != 0){
-            _corXY[0] = scrR.y = _corXY[0] + ypos;
-            _corXY[1] = scrR.x = _corXY[1] + ((xpos > 0) ? 16 : -16);
-            low = high = scrR.h = scrR.w = 16;
-        }
-    }
-    SDL_RenderCopy(Game_sdl::renderer, snakeTexture[0], NULL, &scrR);
-
-    if ((_direction == 'w' ||_direction == 's') && (_corXY[1] == _corXY[_corXY.size() - 1])){
-        _turn = false;
-        low = 16;
-        high = 16;
-    }*/
-    /*for (size_t cnt_arr = _corXY.size() - 1, cnt_s = snakeTexture.size() - 1;  cnt_s != 0 ; cnt_arr -= 2, --cnt_s) {
-        if ((_corXY[cnt_arr - 1] == _corXY[cnt_arr - 3]) && (_corXY[cnt_arr] != _corXY[cnt_arr - 2])){//move on X
-            if (!_turn){
-                _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2] - 16 + 1;
-                _corXY[cnt_arr - 1] = scrR.y = _corXY[cnt_arr - 3];
-            }
-            else if(_turn){
-                if (cnt_arr == _corXY.size() - 1){
-                    scrR.x = ++_corXY[cnt_arr];
-                    scrR.y = _corXY[cnt_arr - 1];
-                    scrR.w = --low;
-                    scrR.h = 16;
-                }
-                else if(!low){
-                    scrR.h = scrR.w = 16;
-                    _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2];
-                    _corXY[cnt_arr - 1] = scrR.y = _corXY[cnt_arr - 3];
-                }
-                else{
-                    scrR.x = _corXY[cnt_arr];
-                    scrR.y = _corXY[cnt_arr - 1];
-                }
-            }
-        }
-        else if ((_corXY[cnt_arr - 1] != _corXY[cnt_arr - 3]) && (_corXY[cnt_arr] == _corXY[cnt_arr - 2])){ //move on Y
-            if (!_turn){
-                _corXY[cnt_arr] = scrR.x = _corXY[cnt_arr - 2];
-                _corXY[cnt_arr - 1] = scrR.y = std::abs(_corXY[cnt_arr - 3] - 16 + 1);
-            }
-            else if (_turn){
-
-            }
-        }
-        SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
-    }*/
-
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }

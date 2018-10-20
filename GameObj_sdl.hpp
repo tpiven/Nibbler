@@ -24,7 +24,13 @@ public:
     void    Update();
     void    Render();
     void    setDirection(char dir);
+    void    moveOnX(size_t &);
+    void    moveOnY(size_t &);
+    void    turnOnX(size_t &);
+    void    turnOnY(size_t &);
+    bool    AreSnakeBlocksEqual();
     bool  _turn;
+
 };
 
 

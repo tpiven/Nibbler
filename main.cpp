@@ -13,6 +13,12 @@
 
 #include "Game_sdl.hpp"
 
+void    obj_staff(Game_sdl &obj){
+    obj.handleEvent();
+    obj.update();
+    obj.render();
+}
+
 int main(int argc, char* argv[]) {
     int const FPS = 60;
     int const frameDealy = 2000 / FPS;
@@ -25,10 +31,7 @@ int main(int argc, char* argv[]) {
     while(!obj.running()){
 
         frameStart = SDL_GetTicks();
-
-        obj.handleEvent();
-        obj.update();
-        obj.render();
+        obj_staff(obj);
         frameTime = SDL_GetTicks() - frameStart;
         if (frameDealy > frameTime)
             SDL_Delay(frameDealy - frameTime);
