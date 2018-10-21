@@ -4,6 +4,8 @@
 
 #include "GameObj_sdl.hpp"
 #include "TextureManager.hpp"
+#define MOVE_X (_cors[0].first == _cors[1].first && _cors[0].second != _cors[1].second)
+#define MOVE_Y (_cors[0].first != _cors[1].first && _cors[0].second == _cors[1].second)
 
 GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : ypos(y), xpos(x) {
     //_objTexture = TextureManager::LoadTexture(texture);
@@ -11,6 +13,7 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     _objTexture = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface);
     SDL_FreeSurface(tmp_surface);*/
     SDL_Surface  *tmp_surface[3];// = IMG_Load(texture);
+    _fr_blockX = "NULL";
     _direction = direction;
     _turn = false;
     if (_direction == 'w' || _direction == 's'){
@@ -76,7 +79,6 @@ void GameObj_sdl::Update() {
         _turn = true;
     }*/
     size_t back = _cors.size() - 1;
-    std::cout << "Direction: " << _direction << " TURN: " << _turn << std::endl;
     if ((_direction == 'w' || _direction == 's') && ((_cors[back].first == _cors[back - 1].first) && (_cors[back].second != _cors[back-1].second))){
         ypos = (_direction == 'w') ? -1 : 1;
         xpos = 0;
@@ -98,7 +100,7 @@ bool GameObj_sdl::AreSnakeBlocksEqual() {
     return false;
 }
 
-void GameObj_sdl::turnOnX(size_t &cnt_cors) {
+void GameObj_sdl::turnOnY(size_t &cnt_cors) {
     if (!cnt_cors && low){
         if (low - 1 == 0){
             _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
@@ -113,7 +115,7 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
             scrR.h = 16;
         }
     }
-    else if (!low){
+    else if (!low || !high){
         scrR.h = scrR.w = 16;
         _cors[cnt_cors].second = scrR.x = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].second : _cors[cnt_cors + 1].second;
         if (cnt_cors == _cors.size() - 1)
@@ -144,11 +146,13 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
     }
 }
 
-void GameObj_sdl::turnOnY(size_t &cnt_cors) {
+void GameObj_sdl::turnOnX(size_t &cnt_cors) {
     if (!cnt_cors && high) {
         if (high - 1 == 0){
             _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
             _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
+            scrR.w = scrR.h = 16;
+            high = 0;
         }
         else{
             scrR.x = _cors[cnt_cors + 1].second;
@@ -157,7 +161,7 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
             scrR.h = --high;
         }
     }
-    else if (!high) {
+    else if (!high || !low) {
         scrR.w = scrR.h = 16;
         _cors[cnt_cors].first = scrR.y = (cnt_cors == _cors.size() - 1) ? _cors[cnt_cors].first : _cors[cnt_cors + 1].first;
         if (cnt_cors == _cors.size() - 1)
@@ -171,7 +175,7 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
         if (cnt_cors == _cors.size() - 1){
             scrR.x = _cors[cnt_cors].second;
             scrR.y = _cors[cnt_cors].first;
-            scrR.w = (_direction == 'd') ?  ++high : --high;
+            scrR.w = (_direction == 'd') ?  ++low : --low;
             scrR.h = 16;
         }
         else{
@@ -188,7 +192,8 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
     }
 }
 
-void GameObj_sdl::moveOnY(size_t &cnt_cors) {
+void GameObj_sdl::moveOnX(size_t &cnt_cors) {
+    _fr_blockX = (!cnt_cors) ? "moveOnX" : _fr_blockX;
     if (!_turn && !AreSnakeBlocksEqual())
         _turn = true;
     if (!_turn){
@@ -201,11 +206,12 @@ void GameObj_sdl::moveOnY(size_t &cnt_cors) {
         }
     }
     else if (_turn) {
-        turnOnX(cnt_cors);
+        turnOnY(cnt_cors);
     }
 }
 
-void GameObj_sdl::moveOnX(size_t & cnt_cors) {
+void GameObj_sdl::moveOnY(size_t & cnt_cors) {
+    _fr_blockX = (!cnt_cors) ? "moveOnY" : _fr_blockX;
     if (!_turn && !AreSnakeBlocksEqual())
         _turn = true;
     if (!_turn){
@@ -218,19 +224,25 @@ void GameObj_sdl::moveOnX(size_t & cnt_cors) {
         }
     }
     else if (_turn) {
-        turnOnY(cnt_cors);
+        turnOnX(cnt_cors);
     }
 }
 
-
 void GameObj_sdl::Render() {
     for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
-        if (cnt_cors == _cors.size() - 1 || ((_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))
-            moveOnY(cnt_cors);
-        else if ((_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second))
+        if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnX") || ((cnt_cors != _cors.size() - 1) && (_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))//идем по оси X
             moveOnX(cnt_cors);
+        else if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnY") || ((cnt_cors != _cors.size() -1) && (_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)))//идем по оси Y
+            moveOnY(cnt_cors);
+        if(_cors[1].first == 217){
+            std::cout << "CNT_CORS: " << cnt_cors << "_CORS.SIZE()" << _cors.size() << std::endl;
+            std::cout << "!!" << std::endl;
+        }
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
+
+
+    std::cout << "CORS[0].first: " << _cors[0].first << " CORS[0].second:" << _cors[0].second << std::endl;
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }

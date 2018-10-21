@@ -18,6 +18,8 @@ private:
     std::vector<int> _corXY;
     std::map<int, std::pair<int, int>>_cors;
     std::map<int, SDL_Texture*> snakeTexture;
+    std::string    _fr_blockX;//first block of snake
+
 public:
     GameObj_sdl(const char *texture, int x, int y, char direction);
     ~GameObj_sdl();
