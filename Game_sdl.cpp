@@ -2,6 +2,9 @@
 #include "TextureManager.hpp"
 #include "GameObj_sdl.hpp"
 #include "Map.hpp"
+#include <chrono>
+#include <thread>
+
 
 GameObj_sdl  *player;
 Map* map;
@@ -40,7 +43,10 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
         return;
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    player = new GameObj_sdl("/Users/kmykhail/Desktop/Nibbler/Picture/dirt.png", 200, 7, 'd');
+    std::string dir = get_current_dir_name();
+    size_t  n = dir.rfind('/');
+    dir.resize(n);
+    player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 7, 'd');
     map = new Map();
 }
 
@@ -54,17 +60,24 @@ void Game_sdl::handleEvent() {
                 _end_game = true;
                 break;
             case SDLK_w:
-                player->setDirection('w');
+                if (player->getDirection() != 's')
+                    player->setDirection('w');
                 break;
             case SDLK_s:
-                player->setDirection('s');
+                if (player->getDirection() != 'w')
+                    player->setDirection('s');
                 break;
             case SDLK_d:
                 std::cout<<"COME" << std::endl;
-                player->setDirection('d');
+                if (player->getDirection() != 'a')
+                    player->setDirection('d');
                 break;
             case SDLK_a:
-                player->setDirection('a');
+                if (player->getDirection() != 'd')
+                    player->setDirection('a');
+                break;
+            case SDLK_SPACE:
+                std::this_thread::sleep_for(std::chrono::seconds(10));
                 break;
             default:
                 break;

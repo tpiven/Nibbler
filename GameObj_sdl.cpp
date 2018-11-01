@@ -17,6 +17,7 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     _direction = direction;
     _turn = false;
     buffVal_y = -1;
+    buffVal_x = -1;
     if (_direction == 'w' || _direction == 's'){
         ypos = (_direction == 'w') ?  -1 : 1;
         xpos = 0;
@@ -54,13 +55,14 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     //_corXY.push_back(x);//last_y//tail_x
     snakeTexture[0] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[2]);//tail
     snakeTexture[1] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[1]);//body
-    snakeTexture[2] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]);//head
+    snakeTexture[2] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[1]);
+    snakeTexture[3] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]);//head
 
 
     _cors[0] = std::make_pair(y, x + 16);//tail
     _cors[1] = std::make_pair(y, x + (16 * 2));
-    _cors[2] = std::make_pair(y, x + (16 * 3));//head
-
+    _cors[2] = std::make_pair(y, x + (16 * 3));
+    _cors[3] = std::make_pair(y, x + (16 * 4));//head
 
     high = low = scrR.h = 16;
     scrR.w = 16;
@@ -148,7 +150,11 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
         }else{
             _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;}
         (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
-        _turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+        //_turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+        if (cnt_cors == _cors.size() - 1){
+            _turn = false;
+            buffVal_y = -1;
+        }
     }
     else{
         if (cnt_cors == _cors.size() - 1){
@@ -194,8 +200,11 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
             high = 0;
         }
         else{
+            if (_cors[cnt_cors].first < (--_cors.end())->second.first)
+                scrR.y = ++_cors[cnt_cors].first;
+            else
+                scrR.y = --_cors[cnt_cors].first;
             scrR.x = _cors[cnt_cors + 1].second;
-            scrR.y = (_direction == 'd') ? (++_cors[cnt_cors].first) : (--_cors[cnt_cors].first);
             scrR.w = 16;
             scrR.h = --high;
         }
@@ -208,13 +217,23 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
         else
             _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
         (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
-        _turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+        //_turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
+        if (cnt_cors == _cors.size() - 1){
+            _turn = false;
+            buffVal_x = -1;
+        }
     }
     else{
         if (cnt_cors == _cors.size() - 1){
-            scrR.x = _cors[cnt_cors].second;
+            //scrR.x = _cors[cnt_cors].second;
             scrR.y = _cors[cnt_cors].first;
-            scrR.w = (_direction == 'd') ?  ++low : --low;
+            //scrR.w = (_direction == 'd') ?  ++low : --low;
+            buffVal_x = (buffVal_x < 0) ? _cors[cnt_cors].second : buffVal_x;
+            if (_direction == 'd')
+                buffVal_x = scrR.x = _cors[cnt_cors].second;
+            else
+                scrR.x = --buffVal_x;
+            scrR.w = ++low;
             scrR.h = 16;
         }
         else{
@@ -240,7 +259,7 @@ void GameObj_sdl::moveOnX(size_t &cnt_cors) {
             _cors[cnt_cors].second = scrR.x = _cors[cnt_cors].second + xpos;
             _cors[cnt_cors].first = scrR.y = _cors[cnt_cors].first + ypos;
         }else {
-            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second - 16 + 1;
+            _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second - ((_direction == 'd') ? 15 : -15);
             _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;
         }
     }
@@ -278,3 +297,5 @@ void GameObj_sdl::Render() {
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
+
+char GameObj_sdl::getDirection() const { return _direction;}

@@ -14,6 +14,7 @@ private:
     int high;
     int low;
     int buffVal_y;
+    int buffVal_x;
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
     std::vector<int> _corXY;
@@ -27,6 +28,7 @@ public:
     void    Update();
     void    Render();
     void    setDirection(char dir);
+    char    getDirection() const;
     void    moveOnX(size_t &);
     void    moveOnY(size_t &);
     void    turnOnX(size_t &);
