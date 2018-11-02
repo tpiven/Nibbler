@@ -51,6 +51,8 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
 }
 
 void Game_sdl::handleEvent() {
+    std::pair<int , int> hl = player->getHighLow();
+    char tmp_sym = player->getSymBuff();
     SDL_PollEvent(&_event);
     if (_event.type == SDL_QUIT)
         _end_game = true;
@@ -59,25 +61,60 @@ void Game_sdl::handleEvent() {
             case SDLK_ESCAPE:
                 _end_game = true;
                 break;
-            case SDLK_w:
-                if (player->getDirection() != 's')
-                    player->setDirection('w');
+            case SDLK_w://1
+                if (player->getDirection() != 's' && (hl.first == 16 && hl.second == 16)){
+                    if (tmp_sym == 'q')
+                        player->setDirection('w');
+                    else if (tmp_sym != 'q'){
+                        player->setDirection(tmp_sym);
+                        player->setSymBuff('w');
+                    }
+                } else if (player->getDirection() != 's' && (hl.first != 16 || hl.second != 16)){
+                    tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
+                    player->setDirection(tmp_sym);
+                }
                 break;
-            case SDLK_s:
-                if (player->getDirection() != 'w')
-                    player->setDirection('s');
+            case SDLK_s://2
+                if (player->getDirection() != 'w' && (hl.first == 16 && hl.second == 16)){
+                    if (tmp_sym == 'q')
+                        player->setDirection('s');
+                    else if (tmp_sym != 'q'){
+                        player->setDirection(tmp_sym);
+                        player->setSymBuff('s');
+                    }
+                }else if (player->getDirection() != 'w' && (hl.first != 16 || hl.second != 16)){
+                    tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
+                    player->setDirection(tmp_sym);
+                }
                 break;
-            case SDLK_d:
-                std::cout<<"COME" << std::endl;
-                if (player->getDirection() != 'a')
-                    player->setDirection('d');
+            case SDLK_d://3
+                if (player->getDirection() != 'a' && (hl.first == 16 && hl.second == 16)){
+                    if (tmp_sym == 'q')
+                        player->setDirection('d');
+                    else if (tmp_sym != 'q'){
+                        player->setDirection(tmp_sym);
+                        player->setSymBuff('d');
+                    }
+                }else if (player->getDirection() != 'a' && (hl.first != 16 || hl.second != 16)){
+                    tmp_sym = (tmp_sym == 'q') ? 'd' : tmp_sym;
+                    player->setSymBuff(tmp_sym);
+                }
                 break;
             case SDLK_a:
-                if (player->getDirection() != 'd')
-                    player->setDirection('a');
+                if (player->getDirection() != 'd' && (hl.first == 16 && hl.second == 16)){
+                    if (tmp_sym == 'q')
+                        player->setDirection('a');
+                    else if (tmp_sym != 'q'){
+                        player->setDirection(tmp_sym);
+                        player->setSymBuff('a');
+                    }
+                }else if (player->getDirection() != 'd' && (hl.first != 16 || hl.second != 16)){
+                    tmp_sym = (tmp_sym == 'q') ? 'a' : tmp_sym;
+                    player->setSymBuff(tmp_sym);
+                }
                 break;
             case SDLK_SPACE:
-                std::this_thread::sleep_for(std::chrono::seconds(10));
+                std::this_thread::sleep_for(std::chrono::seconds(10000));
                 break;
             default:
                 break;

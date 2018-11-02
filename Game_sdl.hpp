@@ -1,12 +1,13 @@
 #ifndef GAME_SDL_HPP
 #define GAME_SDL_HPP
 
-#include "SDL.h"
-#include "SDL_image.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 #include <iostream>
 #include <thread>
 #include <vector>
 #include <map>
+#include <unistd.h>
 
 class Game_sdl{
 private:
@@ -14,6 +15,7 @@ private:
     int _cnt;
     int _width;
     int _height;
+
     SDL_Window *_window;
     SDL_Event    _event;
 public:

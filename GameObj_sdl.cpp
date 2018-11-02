@@ -15,9 +15,11 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     SDL_Surface  *tmp_surface[3];// = IMG_Load(texture);
     _fr_blockX = "NULL";
     _direction = direction;
+    _sybBuff = 'q';
     _turn = false;
     buffVal_y = -1;
     buffVal_x = -1;
+    _cnt_block = 4;
     if (_direction == 'w' || _direction == 's'){
         ypos = (_direction == 'w') ?  -1 : 1;
         xpos = 0;
@@ -149,11 +151,16 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
             buffVal_y = _cors[cnt_cors].first;
         }else{
             _cors[cnt_cors].first = scrR.y = _cors[cnt_cors + 1].first;}
-        (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
+        //(cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
         //_turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
         if (cnt_cors == _cors.size() - 1){
+            low = high = 16;
             _turn = false;
             buffVal_y = -1;
+            if (_sybBuff != 'q'){
+                _direction = _sybBuff;
+                _sybBuff = 'q';
+            }
         }
     }
     else{
@@ -216,11 +223,16 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
             _cors[cnt_cors].second = scrR.x = (_direction == 'd') ? _cors[cnt_cors].second + 16 : _cors[cnt_cors].second - 16;
         else
             _cors[cnt_cors].second = scrR.x = _cors[cnt_cors + 1].second;
-        (cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
+        //(cnt_cors == _cors.size() - 1) ? (low = high = 16) : 0;
         //_turn = (cnt_cors == _cors.size() - 1) ? false : _turn;
         if (cnt_cors == _cors.size() - 1){
+            low = high = 16;
             _turn = false;
             buffVal_x = -1;
+            if (_sybBuff != 'q') {
+                _direction = _sybBuff;
+                _sybBuff = 'q';
+            }
         }
     }
     else{
@@ -294,8 +306,21 @@ void GameObj_sdl::Render() {
             moveOnY(cnt_cors);
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
+    //std::cout << "High: " << high << " Low: " << low << std::endl;
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
 
 char GameObj_sdl::getDirection() const { return _direction;}
+
+char GameObj_sdl::getSymBuff() const { return _sybBuff;}
+void GameObj_sdl::setSymBuff(char sym) { _sybBuff = sym; }
+
+//bool GameObj_sdl::canMoveX() const {
+//    if
+//}
+
+std::pair<int, int > GameObj_sdl::getHighLow() const {
+    return std::make_pair(high, low);
+}
+

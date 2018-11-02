@@ -15,6 +15,8 @@ private:
     int low;
     int buffVal_y;
     int buffVal_x;
+    char _sybBuff;
+    int _cnt_block;
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
     std::vector<int> _corXY;
@@ -29,6 +31,11 @@ public:
     void    Render();
     void    setDirection(char dir);
     char    getDirection() const;
+    void    setSymBuff(char sym);
+    char    getSymBuff() const;
+    bool     canMoveX() const;
+    bool     canMoveY() const;
+    std::pair<int, int >getHighLow() const;
     void    moveOnX(size_t &);
     void    moveOnY(size_t &);
     void    turnOnX(size_t &);
