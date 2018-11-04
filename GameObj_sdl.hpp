@@ -40,7 +40,7 @@ public:
     void    moveOnY(size_t &);
     void    turnOnX(size_t &);
     void    turnOnY(size_t &);
-    std::pair<bool, std::pair<char, int> >  AreSnakeBlocksEqual();
+    bool AreSnakeBlocksEqual(int);
     bool  _turn;
 
 };

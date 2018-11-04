@@ -43,7 +43,11 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
         return;
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    std::string dir = get_current_dir_name();
+    char path[4096];
+    std::string dir = getwd(path);//get_current_dir_name();//macOs stupid
+    //char *cwd_buffer = malloc(sizeof(char) * MAX_PATH_NAME);
+    //std::string dir =
+    std::cout << dir << std::endl;
     size_t  n = dir.rfind('/');
     dir.resize(n);
     player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 7, 'd');
@@ -72,6 +76,13 @@ void Game_sdl::handleEvent() {
                 } else if (player->getDirection() != 's' && (hl.first != 16 || hl.second != 16)){
                     tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
                     player->setDirection(tmp_sym);
+                    //if (tmp_sym == 'q'){
+                    //    player->setDirection('w');
+                    //}
+                    /*else {
+                        player->setDirection(tmp_sym);
+                        tmp_sym = 'q';
+                    }*/
                 }
                 break;
             case SDLK_s://2
