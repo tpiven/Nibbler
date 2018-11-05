@@ -202,7 +202,8 @@ void GameObj_sdl::turnOnY(size_t &cnt_cors) {
            //}
             scrR.w = 16;
             //scrR.h = (_direction == 's') ?  ++high : --high;
-            scrR.h = ++high;
+            //scrR.h = ++high;
+            scrR.h = (high < 16) ? ((16 - high) + 16) : (++high);
         }
         else {
             scrR.w = scrR.h = 16;
@@ -227,7 +228,11 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
             high = 0;
         }
         else{
-            if (_cors[cnt_cors].first < (--_cors.end())->second.first)
+            /*if (_cors[cnt_cors].first < (--_cors.end())->second.first)
+                scrR.y = ++_cors[cnt_cors].first;
+            else
+                scrR.y = --_cors[cnt_cors].first;*/
+            if (_cors[cnt_cors].first < _cors[cnt_cors + 1].first)
                 scrR.y = ++_cors[cnt_cors].first;
             else
                 scrR.y = --_cors[cnt_cors].first;
@@ -319,9 +324,9 @@ void GameObj_sdl::moveOnY(size_t & cnt_cors) {
         }
     }
     else if (_turn) {
-        //if (cnt_cors == _cors.size() - 1 && (_direction == 's' || _direction == 'w'))
-        //    turnOnY(cnt_cors);
-        //else
+        if (cnt_cors == _cors.size() - 1 && (_direction == 's' || _direction == 'w'))
+            turnOnY(cnt_cors);
+        else
             turnOnX(cnt_cors);
     }
 }

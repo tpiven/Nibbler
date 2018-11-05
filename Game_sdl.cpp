@@ -66,6 +66,7 @@ void Game_sdl::handleEvent() {
                 _end_game = true;
                 break;
             case SDLK_w://1
+            std::cout << 'w' << std::endl;
                 if (player->getDirection() != 's' && (hl.first == 16 && hl.second == 16)){
                     if (tmp_sym == 'q')
                         player->setDirection('w');
@@ -74,18 +75,12 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('w');
                     }
                 } else if (player->getDirection() != 's' && (hl.first != 16 || hl.second != 16)){
-                    tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
-                    player->setDirection(tmp_sym);
-                    //if (tmp_sym == 'q'){
-                    //    player->setDirection('w');
-                    //}
-                    /*else {
-                        player->setDirection(tmp_sym);
-                        tmp_sym = 'q';
-                    }*/
+                    if (tmp_sym == 'q')
+                        player->setSymBuff('w');
                 }
                 break;
             case SDLK_s://2
+            std::cout << 's' << std::endl;
                 if (player->getDirection() != 'w' && (hl.first == 16 && hl.second == 16)){
                     if (tmp_sym == 'q')
                         player->setDirection('s');
@@ -94,11 +89,14 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('s');
                     }
                 }else if (player->getDirection() != 'w' && (hl.first != 16 || hl.second != 16)){
-                    tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
-                    player->setDirection(tmp_sym);
+                    //tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
+                    //player->setDirection(tmp_sym);
+                    if (tmp_sym == 'q')
+                        player->setSymBuff('s');
                 }
                 break;
             case SDLK_d://3
+            std::cout << 'd' << std::endl;
                 if (player->getDirection() != 'a' && (hl.first == 16 && hl.second == 16)){
                     if (tmp_sym == 'q')
                         player->setDirection('d');
@@ -107,11 +105,14 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('d');
                     }
                 }else if (player->getDirection() != 'a' && (hl.first != 16 || hl.second != 16)){
-                    tmp_sym = (tmp_sym == 'q') ? 'd' : tmp_sym;
-                    player->setSymBuff(tmp_sym);
+                    //tmp_sym = (tmp_sym == 'q') ? 'd' : tmp_sym;
+                    //player->setSymBuff(tmp_sym);
+                    if (tmp_sym == 'q')
+                        player->setSymBuff('d');
                 }
                 break;
             case SDLK_a:
+                std::cout << 'a' << std::endl;
                 if (player->getDirection() != 'd' && (hl.first == 16 && hl.second == 16)){
                     if (tmp_sym == 'q')
                         player->setDirection('a');
@@ -120,8 +121,10 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('a');
                     }
                 }else if (player->getDirection() != 'd' && (hl.first != 16 || hl.second != 16)){
-                    tmp_sym = (tmp_sym == 'q') ? 'a' : tmp_sym;
-                    player->setSymBuff(tmp_sym);
+                    //tmp_sym = (tmp_sym == 'q') ? 'a' : tmp_sym;
+                    //player->setSymBuff(tmp_sym);
+                    if (tmp_sym == 'q')
+                        player->setSymBuff('a');
                 }
                 break;
             case SDLK_SPACE:
