@@ -19,9 +19,11 @@ private:
     int _cnt_block;
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
+    SDL_Rect    *scrR_food;
     std::vector<int> _corXY;
     std::map<int, std::pair<int, int>>_cors;
     std::map<int, SDL_Texture*> snakeTexture;
+    SDL_Texture *_food;
     std::string    _fr_blockX;//first block of snake
 
 public:
@@ -42,7 +44,9 @@ public:
     void    turnOnY(size_t &);
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
-
+    void    grow();//grow body snake
+    void    mandatoryFood();//mandatory food on map
+    void    surpriseFood();
 };
 
 

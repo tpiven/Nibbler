@@ -9,7 +9,6 @@
 GameObj_sdl  *player;
 Map* map;
 
-
 SDL_Renderer* Game_sdl::renderer = nullptr;
 
 Game_sdl::Game_sdl() :_end_game(false), _cnt(0) {
@@ -51,7 +50,7 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
     size_t  n = dir.rfind('/');
     dir.resize(n);
     player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 7, 'd');
-    map = new Map();
+    map = new Map(1440, 1072);//must check weight, height
 }
 
 void Game_sdl::handleEvent() {

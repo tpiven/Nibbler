@@ -8,6 +8,7 @@
 #include <vector>
 #include <map>
 #include <unistd.h>
+#include "time.h"
 
 
 class Game_sdl{

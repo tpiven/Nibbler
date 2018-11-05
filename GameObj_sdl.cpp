@@ -4,14 +4,22 @@
 
 #include "GameObj_sdl.hpp"
 #include "TextureManager.hpp"
+#include "glob.hpp"
+
+int g_weight;
+int g_height;
+
 #define MOVE_X (_cors[0].first == _cors[1].first && _cors[0].second != _cors[1].second)
 #define MOVE_Y (_cors[0].first != _cors[1].first && _cors[0].second == _cors[1].second)
+
 
 GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : ypos(y), xpos(x) {
     //_objTexture = TextureManager::LoadTexture(texture);
     /*SDL_Surface *tmp_surface = IMG_Load(texture);
     _objTexture = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface);
     SDL_FreeSurface(tmp_surface);*/
+    //g_weight = 123;
+//    std::cout << "!!!!!!!!!!!!!" <<  g_weight << std::endl;
     SDL_Surface  *tmp_surface[3];// = IMG_Load(texture);
     _fr_blockX = "NULL";
     _direction = direction;
@@ -28,6 +36,8 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
         ypos = 0;
         xpos = (_direction == 'a') ? -1 : 1;
     }
+    //std::cout << "QW: " << g_weight  << " " << g_height << std::endl;
+    //exit(0);
     std::cout << "Textura: "  << texture << std::endl;
     tmp_surface[0] = IMG_Load(texture);
     char path[4096];
@@ -36,6 +46,8 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     dir.resize(n);
     tmp_surface[1] = IMG_Load((dir + "/Picture/grass_bloc_mod.png").c_str());
     tmp_surface[2] = IMG_Load((dir + "/Picture/dirt_1.png").c_str());
+    scrR_food = nullptr;
+    //std::cout << lvl1[0] << std::endl;
     //snakeTexture.push_back(SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]));//head
 
     //_corXY.push_back(y + 0);
@@ -61,7 +73,8 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     snakeTexture[2] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[1]);
     snakeTexture[3] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]);//head
 
-
+    SDL_Surface *tmp_food = IMG_Load((dir + "/Picture/block_left_gray.png").c_str());;
+    _food = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_food);
     _cors[0] = std::make_pair(y, x + 16);//tail
     _cors[1] = std::make_pair(y, x + (16 * 2));
     _cors[2] = std::make_pair(y, x + (16 * 3));
@@ -78,6 +91,7 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
 
 void GameObj_sdl::Update() {
 
+    std::cout << "[[[QW: }}}}r" << g_weight  << " " << g_height << std::endl;
     /*if ((_direction == 'w' || _direction == 's') && ((_corXY[0] == _corXY[2]) && (_corXY[1] != _corXY[3]))){
         ypos = (_direction == 'w') ?  -1 : 1;
         xpos = 0;
@@ -341,6 +355,24 @@ void GameObj_sdl::Render() {
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
     //std::cout << "High: " << high << " Low: " << low << std::endl;
+}
+
+void GameObj_sdl::grow() {
+    //_cors.emplace(_cnt_block, );
+}
+
+void GameObj_sdl::mandatoryFood() {
+    if (!scrR_food) {
+        scrR_food = new SDL_Rect;
+        srand(time(NULL));
+        while (scrR_food->x <= 0)
+            g_weight = rand() % g_weight;
+        while(scrR_food->y <= 0)
+            g_height = rand() % g_height;
+        scrR_food->h = 8;
+        scrR_food->w = 8;
+    }
+    //SDL_RenderCopy(Game_sdl);
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
