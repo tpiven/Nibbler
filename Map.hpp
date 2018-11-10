@@ -7,6 +7,9 @@
 
 #include "Game_sdl.hpp"
 
+//int g_weight;
+//int g_height;
+
 class Map  {
 private:
     SDL_Rect src, dest;
@@ -60,13 +63,15 @@ private:
 
 
 
-    int map[67][90];
+    //int map[67][90];
+    int (*_map)[67][90];
 public:
-    Map();
+    Map(int w, int h);
     ~Map();
-    void LoadMap(int arr[67][90]);
+    void LoadMap();
     void DrawMap();
-
+    void    setMap(int x, int y);
+    int     *getMap();
 };
 
 

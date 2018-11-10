@@ -75,6 +75,8 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
 
     SDL_Surface *tmp_food = IMG_Load((dir + "/Picture/block_left_gray.png").c_str());;
     _food = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_food);
+//    for(int i = 0; i < 4; i++)
+//        map[y][x +(16 * (i + 1))] = -1;
     _cors[0] = std::make_pair(y, x + 16);//tail
     _cors[1] = std::make_pair(y, x + (16 * 2));
     _cors[2] = std::make_pair(y, x + (16 * 3));
@@ -362,7 +364,7 @@ void GameObj_sdl::grow() {
 }
 
 void GameObj_sdl::mandatoryFood() {
-    if (!scrR_food) {
+    /*if (!scrR_food) {
         scrR_food = new SDL_Rect;
         srand(time(NULL));
         while (scrR_food->x <= 0)
@@ -371,7 +373,7 @@ void GameObj_sdl::mandatoryFood() {
             g_height = rand() % g_height;
         scrR_food->h = 8;
         scrR_food->w = 8;
-    }
+    }*/
     //SDL_RenderCopy(Game_sdl);
 }
 

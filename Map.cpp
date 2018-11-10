@@ -4,6 +4,7 @@
 
 #include "Map.hpp"
 #include "TextureManager.hpp"
+#include "glob.hpp"
 
 //0 grass
 //1 border
@@ -114,8 +115,7 @@ int lvl1[40][50] = {
 
 
 
-
-Map::Map() {
+Map::Map(int weight, int height) {
     /*
     grass = TextureManager::LoadTexture("/Users/kmykhail/Desktop/Nibbler/Picture/grass_lib1.png");//0
     water = TextureManager::LoadTexture("/Users/kmykhail/Desktop/Nibbler/Picture/water.png");//20
@@ -161,25 +161,35 @@ Map::Map() {
     bloc_turn1_white = TextureManager::LoadTexture("/Users/kmykhail/Desktop/Nibbler/Picture/bloc_turn1_white.png");//60
     bloc_turn2_white = TextureManager::LoadTexture("/Users/kmykhail/Desktop/Nibbler/Picture/bloc_turn2_white.png");//61
 */
-    Level1_map = TextureManager::LoadTexture("/Users/kmykhail/Desktop/qw.png");
-    LoadMap(lvl1);
+    Level1_map = TextureManager::LoadTexture("/Users/kmykhail/Desktop/qwpng");//qw.png
+    LoadMap();
     src.x = src.y = 0;
-    src.w = dest.w = 1440;//256*256
-    src.h = dest.h = 1072;//
-
+    g_weight = src.w = dest.w = weight;//256*256
+    g_height = src.h = dest.h = height;//
     dest.x= dest.y = 0;
 }
 
 Map::~Map() {}
 
-void Map::LoadMap(int arr[67][90])  {
-    for (int row = 0; row < 67 ; ++row) {
-        for (int column = 0; column < 90; ++column) {
-            map[row][column] = arr[row][column];
-        }
-    }
+void Map::LoadMap()  {
+//    for (int row = 0; row < 67 ; ++row) {
+//        for (int column = 0; column < 90; ++column) {
+//            map[row][column] = arr[row][column];
+//        }
+//    }
+    //map = std::move(lvl1);
+    _map = &lvl1;
+    std::cout << lvl1 << std::endl;
     std::cout << "STOP" << std::endl;
+    auto xxx = getMap();
+    xxx[0][1] = -1;
 }
+
+void Map::setMap(int x, int y) {
+    (*_map)[x][y] = -1;
+}
+
+int* Map::getMap() { return *lvl1;}
 
 void Map::DrawMap() {
     /*int type = 0;
