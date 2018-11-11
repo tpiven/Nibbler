@@ -5,10 +5,14 @@
 #ifndef NIBBLER_MAP_HPP
 #define NIBBLER_MAP_HPP
 
-#include "Game_sdl.hpp"
+#include "headers.h"
 
 //int g_weight;
 //int g_height;
+//    int     (*getMap())[67][90];
+
+
+//typedef int (*())[67][90] get_t;
 
 class Map  {
 private:
@@ -64,14 +68,15 @@ private:
 
 
     //int map[67][90];
-    int (*_map)[67][90];
+
 public:
     Map(int w, int h);
     ~Map();
     void LoadMap();
     void DrawMap();
-    void    setMap(int x, int y);
-    int     *getMap();
+//    void    setMap(int x, int y);
+//    int     (*getMap())[67][90];
+    int (*_map)[67][90];
 };
 
 

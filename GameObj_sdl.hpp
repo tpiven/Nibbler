@@ -4,6 +4,7 @@
 #ifndef NIBBLER_GAMEOBJ_SDL_HPP
 #define NIBBLER_GAMEOBJ_SDL_HPP
 
+#include "headers.h"
 #include "Game_sdl.hpp"
 
 class GameObj_sdl {
@@ -19,18 +20,16 @@ private:
     int _cnt_block;
     SDL_Texture *_objTexture;
     SDL_Rect    scrR;
-    SDL_Rect    *scrR_food;
     std::vector<int> _corXY;
     std::map<int, std::pair<int, int>>_cors;
     std::map<int, SDL_Texture*> snakeTexture;
-    SDL_Texture *_food;
     std::string    _fr_blockX;//first block of snake
 
 public:
-    GameObj_sdl(const char *texture, int x, int y, char direction);
+    GameObj_sdl(const char *texture, int x, int y, int (*)[67][90], char direction);
     ~GameObj_sdl();
     void    Update();
-    void    Render();
+    void    Render(int (*&)[67][90]);
     void    setDirection(char dir);
     char    getDirection() const;
     void    setSymBuff(char sym);
@@ -45,8 +44,6 @@ public:
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
     void    grow();//grow body snake
-    void    mandatoryFood();//mandatory food on map
-    void    surpriseFood();
 };
 
 

@@ -1,15 +1,3 @@
-//#include <iostream>
-//# include <OpenGL/gl3.h>
-//# include <stdio.h>
-//# include <SDL.h>
-//# include <SDL_video.h>
-//# include <math.h>
-//# include <stdbool.h>
-//# include <string.h>
-//# include <stdlib.h>
-//# include "SDL_ttf.h"
-//# include "SDL_image.h"
-//# include <SDL_keycode.h>
 
 #include "Game_sdl.hpp"
 
@@ -21,7 +9,7 @@ void    obj_staff(Game_sdl &obj){
 
 int main(int argc, char* argv[]) {
     int const FPS = 60;
-    int const frameDealy = 1000 / FPS;
+    int const frameDealy = 700 / FPS;
 
     uint32_t  frameStart;
     int frameTime;
@@ -39,3 +27,4 @@ int main(int argc, char* argv[]) {
     obj.clean();
     return 0;
 }
+

@@ -166,30 +166,28 @@ Map::Map(int weight, int height) {
     src.x = src.y = 0;
     g_weight = src.w = dest.w = weight;//256*256
     g_height = src.h = dest.h = height;//
-    dest.x= dest.y = 0;
+    //dest.x= dest.y = 0;
 }
+
 
 Map::~Map() {}
 
 void Map::LoadMap()  {
-//    for (int row = 0; row < 67 ; ++row) {
-//        for (int column = 0; column < 90; ++column) {
-//            map[row][column] = arr[row][column];
-//        }
-//    }
-    //map = std::move(lvl1);
     _map = &lvl1;
     std::cout << lvl1 << std::endl;
     std::cout << "STOP" << std::endl;
-    auto xxx = getMap();
-    xxx[0][1] = -1;
 }
 
-void Map::setMap(int x, int y) {
-    (*_map)[x][y] = -1;
-}
+//void Map::setMap(int x, int y){
+//    (*_map)[x][y] = -1;
+//}
 
-int* Map::getMap() { return *lvl1;}
+//int (Map::*getMap())[67][90]{
+    //return (int (*)[67][90])lvl1;
+//}
+
+
+
 
 void Map::DrawMap() {
     /*int type = 0;
@@ -315,5 +313,5 @@ void Map::DrawMap() {
         }
         std::cout << std::endl;
     }*/
-    TextureManager::Draw(Level1_map, src, dest);
+    TextureManager::Draw(Level1_map, src);
 }

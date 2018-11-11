@@ -6,14 +6,12 @@
 #include "TextureManager.hpp"
 #include "glob.hpp"
 
-int g_weight;
-int g_height;
 
 #define MOVE_X (_cors[0].first == _cors[1].first && _cors[0].second != _cors[1].second)
 #define MOVE_Y (_cors[0].first != _cors[1].first && _cors[0].second == _cors[1].second)
 
 
-GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : ypos(y), xpos(x) {
+GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, int (*toto)[67][90], char direction) : ypos(y), xpos(x) {
     //_objTexture = TextureManager::LoadTexture(texture);
     /*SDL_Surface *tmp_surface = IMG_Load(texture);
     _objTexture = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface);
@@ -46,7 +44,6 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     dir.resize(n);
     tmp_surface[1] = IMG_Load((dir + "/Picture/grass_bloc_mod.png").c_str());
     tmp_surface[2] = IMG_Load((dir + "/Picture/dirt_1.png").c_str());
-    scrR_food = nullptr;
     //std::cout << lvl1[0] << std::endl;
     //snakeTexture.push_back(SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]));//head
 
@@ -74,9 +71,9 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
     snakeTexture[3] = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_surface[0]);//head
 
     SDL_Surface *tmp_food = IMG_Load((dir + "/Picture/block_left_gray.png").c_str());;
-    _food = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_food);
-//    for(int i = 0; i < 4; i++)
-//        map[y][x +(16 * (i + 1))] = -1;
+   // _food = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_food);
+    for(int i = 0; i < 4; i++)
+        (*toto)[(y * 67 / g_height) - 1][(x * 90 / 1440) + i] = -1;
     _cors[0] = std::make_pair(y, x + 16);//tail
     _cors[1] = std::make_pair(y, x + (16 * 2));
     _cors[2] = std::make_pair(y, x + (16 * 3));
@@ -92,18 +89,6 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, char direction) : yp
 }
 
 void GameObj_sdl::Update() {
-
-    std::cout << "[[[QW: }}}}r" << g_weight  << " " << g_height << std::endl;
-    /*if ((_direction == 'w' || _direction == 's') && ((_corXY[0] == _corXY[2]) && (_corXY[1] != _corXY[3]))){
-        ypos = (_direction == 'w') ?  -1 : 1;
-        xpos = 0;
-        _turn = true;
-    }
-    else if ((_direction == 'a' || _direction == 'd') && ((_corXY[0] != _corXY[2]) && (_corXY[1] == _corXY[3]))){
-        ypos = 0;
-        xpos = (_direction == 'a') ? -1 : 1;
-        _turn = true;
-    }*/
     size_t back = _cors.size() - 1;
     if ((_direction == 'w' || _direction == 's') && ((_cors[back].first == _cors[back - 1].first) && (_cors[back].second != _cors[back-1].second))){
         ypos = (_direction == 'w') ? -1 : 1;
@@ -121,26 +106,6 @@ void GameObj_sdl::Update() {
 //second == x
 
 bool GameObj_sdl::AreSnakeBlocksEqual(int cnt_cors) {
-    /*if (_cors[0].first == (--_cors.end())->second.first){
-        std::cout << "second: " << _cors[_cnt_block].second - (16 * _cnt_block) << std::endl;
-        if (_cors[0].second == _cors[_cnt_block].second - (16 * _cnt_block))
-            return std::make_pair(true, std::make_pair('y', (--_cors.end())->second.second - _cors[0].second));
-        else
-            return std::make_pair(false, std::make_pair('q', 0));
-    }
-    else if (_cors[0].second == (--_cors.end())->second.second){
-        std::cout << "first: " << _cors[_cnt_block].first - (16 * _cnt_block) << std::endl;
-        if (_cors[0].first == (_cors[_cnt_block].first - (16 * _cnt_block)))
-            return std::make_pair(true, std::make_pair('x', (--_cors.end())->second.first - _cors[0].first));
-        else
-            return std::make_pair(false, std::make_pair('q', 0));
-    }
-    else
-        return std::make_pair(false, std::make_pair('q', 0));*/
-//    if (!cnt_cors && _cors[0].first == (--_cors.end())->second.first && _cors[0].second == _cors[_cnt_block].second - (16 * _cnt_block))
-//        return true;
-//    else if (!cnt_cors && _cors[0].second == (--_cors.end())->second.second && _cors[0].first == (_cors[_cnt_block].first - (16 * _cnt_block)))
-//        return true;
     int min_second  = (_cors[_cnt_block].second < _cors[0].second) ? _cors[_cnt_block].second : _cors[0].second;
     int max_second = (_cors[_cnt_block].second > _cors[0].second) ? _cors[_cnt_block].second : _cors[0].second;
 
@@ -347,35 +312,41 @@ void GameObj_sdl::moveOnY(size_t & cnt_cors) {
     }
 }
 
-void GameObj_sdl::Render() {
+void GameObj_sdl::Render(int (*&m_map)[67][90]) {
+    std::pair<int, int> prev_cor, pres_cor;
     _cnt_block = _cors.size() - 1;
     for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
+        prev_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
         if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnX") || ((cnt_cors != _cors.size() - 1) && (_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))//идем по оси X
             moveOnX(cnt_cors);
         else if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnY") || ((cnt_cors != _cors.size() -1) && (_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)))//идем по оси Y
             moveOnY(cnt_cors);
+        pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
+        if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1))
+            (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
-    //std::cout << "High: " << high << " Low: " << low << std::endl;
 }
 
 void GameObj_sdl::grow() {
     //_cors.emplace(_cnt_block, );
 }
 
-void GameObj_sdl::mandatoryFood() {
-    /*if (!scrR_food) {
+/*void GameObj_sdl::mandatoryFood(int (*m_map)[67][90]) {
+    if (!scrR_food) {
         scrR_food = new SDL_Rect;
+        scrR_food->y = scrR_food->x = -1;
+        scrR_food->h = scrR_food->w = 8;
         srand(time(NULL));
-        while (scrR_food->x <= 0)
-            g_weight = rand() % g_weight;
-        while(scrR_food->y <= 0)
-            g_height = rand() % g_height;
-        scrR_food->h = 8;
-        scrR_food->w = 8;
-    }*/
-    //SDL_RenderCopy(Game_sdl);
-}
+        while(scrR_food->y < 0 || scrR_food->x < 0){
+            scrR_food->y = rand() % (g_height - 1);
+            scrR_food->x = rand() % (g_weight - 1);
+            if ((*m_map)[(scrR_food->y * 67 / g_height) - 1][(scrR_food->x * 90 / g_weight) - 1] != 0)
+                scrR_food->y = scrR_food->x = -1;
+        }
+    }
+    SDL_RenderCopy(Game_sdl::renderer, );
+}*/
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
 
@@ -384,9 +355,6 @@ char GameObj_sdl::getDirection() const { return _direction;}
 char GameObj_sdl::getSymBuff() const { return _sybBuff;}
 void GameObj_sdl::setSymBuff(char sym) { _sybBuff = sym; }
 
-//bool GameObj_sdl::canMoveX() const {
-//    if
-//}
 
 std::pair<int, int > GameObj_sdl::getHighLow() const {
     return std::make_pair(high, low);

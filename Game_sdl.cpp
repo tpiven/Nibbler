@@ -1,13 +1,7 @@
 #include "Game_sdl.hpp"
-#include "TextureManager.hpp"
-#include "GameObj_sdl.hpp"
-#include "Map.hpp"
-#include <chrono>
-#include <thread>
+//#include "GameObj_sdl.hpp"
 
 
-GameObj_sdl  *player;
-Map* map;
 
 SDL_Renderer* Game_sdl::renderer = nullptr;
 
@@ -46,11 +40,13 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
     std::string dir = getwd(path);//get_current_dir_name();//macOs stupid
     //char *cwd_buffer = malloc(sizeof(char) * MAX_PATH_NAME);
     //std::string dir =
-    std::cout << dir << std::endl;
+    //std::cout << dir << std::endl;
     size_t  n = dir.rfind('/');
     dir.resize(n);
-    player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 7, 'd');
-    map = new Map(1440, 1072);//must check weight, height
+    map = std::make_shared<Map>(Map(1440, 1072));
+    //player = std::make_shared<GameObj_sdl>(GameObj_sdl((dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d'));
+    player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d');
+    food = std::make_shared<Food>((dir + "/Picture/small_food.png").c_str(), (dir + "/Picture/big_food.png").c_str());
 }
 
 void Game_sdl::handleEvent() {
@@ -137,12 +133,14 @@ void Game_sdl::handleEvent() {
 
 void Game_sdl::update() {
     player->Update();
+    food->mandatoryFood(map->_map);
 }
 
 void Game_sdl::render() {
     SDL_RenderClear(renderer);
     map->DrawMap();
-    player->Render();
+    player->Render(map->_map);
+    food->DrawFood();
     SDL_RenderPresent(renderer);
 }
 
