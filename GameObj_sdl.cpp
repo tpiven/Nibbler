@@ -322,31 +322,22 @@ void GameObj_sdl::Render(int (*&m_map)[67][90]) {
         else if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnY") || ((cnt_cors != _cors.size() -1) && (_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)))//идем по оси Y
             moveOnY(cnt_cors);
         pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
-        if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1))
+        if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1)){
+            if (cnt_cors && (*m_map)[pres_cor.first][pres_cor.second] == -2){
+                grow(m_map);//
+            }
             (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
+        }
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
+    //grow(m_map);
 }
 
-void GameObj_sdl::grow() {
-    //_cors.emplace(_cnt_block, );
-}
+void GameObj_sdl::grow(int (*m_map)[67][90]) {
+    if (){//add handler for _cors
 
-/*void GameObj_sdl::mandatoryFood(int (*m_map)[67][90]) {
-    if (!scrR_food) {
-        scrR_food = new SDL_Rect;
-        scrR_food->y = scrR_food->x = -1;
-        scrR_food->h = scrR_food->w = 8;
-        srand(time(NULL));
-        while(scrR_food->y < 0 || scrR_food->x < 0){
-            scrR_food->y = rand() % (g_height - 1);
-            scrR_food->x = rand() % (g_weight - 1);
-            if ((*m_map)[(scrR_food->y * 67 / g_height) - 1][(scrR_food->x * 90 / g_weight) - 1] != 0)
-                scrR_food->y = scrR_food->x = -1;
-        }
     }
-    SDL_RenderCopy(Game_sdl::renderer, );
-}*/
+}
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
 

@@ -15,6 +15,8 @@ private:
     SDL_Rect    scrR_big;
     std::pair<int, int> _cor_lil_food;
     std::pair<int, int> _cor_big_food;
+    int _move_food_x;
+    int _move_food_y;
 public:
     Food(const char *lil_food, const char *big_food);
     ~Food();

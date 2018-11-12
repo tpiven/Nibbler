@@ -34,8 +34,6 @@ public:
     char    getDirection() const;
     void    setSymBuff(char sym);
     char    getSymBuff() const;
-    bool     canMoveX() const;
-    bool     canMoveY() const;
     std::pair<int, int >getHighLow() const;
     void    moveOnX(size_t &);
     void    moveOnY(size_t &);
@@ -43,7 +41,7 @@ public:
     void    turnOnY(size_t &);
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
-    void    grow();//grow body snake
+    void    grow(int (*m_map)[67][90]);//grow body snake
 };
 
 

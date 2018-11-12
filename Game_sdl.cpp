@@ -43,7 +43,7 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
     //std::cout << dir << std::endl;
     size_t  n = dir.rfind('/');
     dir.resize(n);
-    map = std::make_shared<Map>(Map(1440, 1072));
+    map = std::make_shared<Map>(Map(1280, 768));//1440 | 1072
     //player = std::make_shared<GameObj_sdl>(GameObj_sdl((dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d'));
     player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d');
     food = std::make_shared<Food>((dir + "/Picture/small_food.png").c_str(), (dir + "/Picture/big_food.png").c_str());
@@ -84,8 +84,6 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('s');
                     }
                 }else if (player->getDirection() != 'w' && (hl.first != 16 || hl.second != 16)){
-                    //tmp_sym = (tmp_sym == 'q') ? 'w' : tmp_sym;
-                    //player->setDirection(tmp_sym);
                     if (tmp_sym == 'q')
                         player->setSymBuff('s');
                 }
@@ -100,8 +98,6 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('d');
                     }
                 }else if (player->getDirection() != 'a' && (hl.first != 16 || hl.second != 16)){
-                    //tmp_sym = (tmp_sym == 'q') ? 'd' : tmp_sym;
-                    //player->setSymBuff(tmp_sym);
                     if (tmp_sym == 'q')
                         player->setSymBuff('d');
                 }
@@ -116,8 +112,6 @@ void Game_sdl::handleEvent() {
                         player->setSymBuff('a');
                     }
                 }else if (player->getDirection() != 'd' && (hl.first != 16 || hl.second != 16)){
-                    //tmp_sym = (tmp_sym == 'q') ? 'a' : tmp_sym;
-                    //player->setSymBuff(tmp_sym);
                     if (tmp_sym == 'q')
                         player->setSymBuff('a');
                 }
