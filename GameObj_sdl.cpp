@@ -312,7 +312,7 @@ void GameObj_sdl::moveOnY(size_t & cnt_cors) {
     }
 }
 
-void GameObj_sdl::Render(int (*&m_map)[67][90]) {
+void GameObj_sdl::Render(int (*&m_map)[67][90], std::shared_ptr<Food> & food) {
     std::pair<int, int> prev_cor, pres_cor;
     _cnt_block = _cors.size() - 1;
     for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
@@ -324,17 +324,19 @@ void GameObj_sdl::Render(int (*&m_map)[67][90]) {
         pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
         if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1)){
             if (cnt_cors && (*m_map)[pres_cor.first][pres_cor.second] == -2){
-                grow(m_map);//
+                grow(m_map, food);//
             }
-            (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
+            else
+                (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
         }
         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
-    //grow(m_map);
 }
 
-void GameObj_sdl::grow(int (*m_map)[67][90]) {
-    if (){//add handler for _cors
+void GameObj_sdl::grow(int (*m_map)[67][90], std::shared_ptr<Food> & food) {
+    if (food->getCorsLilFood() == _cors[_cnt_block] ||
+        ){//могу какой то частичкой на него заехать
+        food->setCorsLilFood(std::make_pair(-1, -1));
 
     }
 }

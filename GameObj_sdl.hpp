@@ -6,6 +6,9 @@
 
 #include "headers.h"
 #include "Game_sdl.hpp"
+#include "Food.hpp"
+
+class Food;
 
 class GameObj_sdl {
 private:
@@ -29,7 +32,7 @@ public:
     GameObj_sdl(const char *texture, int x, int y, int (*)[67][90], char direction);
     ~GameObj_sdl();
     void    Update();
-    void    Render(int (*&)[67][90]);
+    void    Render(int (*&)[67][90], std::shared_ptr<Food> & food);
     void    setDirection(char dir);
     char    getDirection() const;
     void    setSymBuff(char sym);
@@ -41,7 +44,7 @@ public:
     void    turnOnY(size_t &);
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
-    void    grow(int (*m_map)[67][90]);//grow body snake
+    void    grow(int (*m_map)[67][90], std::shared_ptr<Food> & food);//grow body snake
 };
 
 

@@ -133,7 +133,7 @@ void Game_sdl::update() {
 void Game_sdl::render() {
     SDL_RenderClear(renderer);
     map->DrawMap();
-    player->Render(map->_map);
+    player->Render(map->_map, food);
     food->DrawFood();
     SDL_RenderPresent(renderer);
 }

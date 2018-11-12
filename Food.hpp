@@ -23,6 +23,10 @@ public:
     void    mandatoryFood(int (*)[67][90]);//mandatory food on map
     void    surpriseFood();
     void    DrawFood();
+    std::pair<int, int> getCorsLilFood() const;
+    std::pair<int, int> getCorsBigFood() const;
+    void                setCorsLilFood(std::pair<int, int>);
+    void                setCorsBigFood(std::pair<int, int>);
 };
 
 #endif

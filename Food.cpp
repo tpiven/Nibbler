@@ -30,31 +30,48 @@ void Food::mandatoryFood(int (*m_map)[67][90]){
             }
         }
     }else{
-        if ((_move_food_y < 8 && _move_food_x < 8) && cnt == 8){
+        if ((_move_food_y < 8 && _move_food_x < 8) && cnt == 7){
             _move_food_x++;
             scrR_lil.x = _cor_lil_food.second++;
         }
-        else if ((_move_food_y < 8 && _move_food_x > 0) && cnt == 8){
+        else if ((_move_food_y < 8 && _move_food_x > 0) && cnt == 7){
             _move_food_y++;
             _move_food_x--;
             scrR_lil.y = _cor_lil_food.first++;
             scrR_lil.x = _cor_lil_food.second--;
         }
-        else if ((_move_food_y > 0 && _move_food_x < 8) && cnt == 8){
+        else if ((_move_food_y > 0 && _move_food_x < 8) && cnt == 7){
             _move_food_x++;
             scrR_lil.x = _cor_lil_food.second++;
         }
-        else if ((_move_food_y > 0 && _move_food_x > 0) && cnt == 8){
+        else if ((_move_food_y > 0 && _move_food_x > 0) && cnt == 7){
             --_move_food_y;
             --_move_food_x;
             scrR_lil.y = _cor_lil_food.first--;
             scrR_lil.x = _cor_lil_food.second--;
         }
-        cnt = (cnt == 8) ? 0 : cnt;
+        cnt = (cnt == 7) ? 0 : cnt;
     }
     scrR_lil.w = scrR_lil.h = 8;
     cnt++;
 }
+
+std::pair<int, int> Food::getCorsLilFood() const {
+    return _cor_lil_food;
+}
+
+std::pair<int, int> Food::getCorsBigFood() const {
+    return _cor_big_food;
+}
+
+void Food::setCorsLilFood(std::pair<int, int> setCors) {
+    _cor_lil_food = setCors;
+}
+
+void Food::setCorsBigFood(std::pair<int, int> setCors) {
+    _cor_big_food = setCors;
+}
+
 
 void Food::DrawFood() {
     TextureManager::Draw(_texture_food_lil, scrR_lil);
