@@ -5,8 +5,8 @@
 #ifndef NIBBLER_HEADERS_H
 #define NIBBLER_HEADERS_H
 
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <thread>
 #include <vector>

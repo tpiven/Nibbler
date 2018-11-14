@@ -334,9 +334,9 @@ void GameObj_sdl::Render(int (*&m_map)[67][90]) {
 }
 
 void GameObj_sdl::grow(int (*m_map)[67][90]) {
-    if (){//add handler for _cors
+   // if (){//add handler for _cors
 
-    }
+    //}
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
