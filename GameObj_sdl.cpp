@@ -316,14 +316,17 @@ void GameObj_sdl::Render(int (*&m_map)[67][90], std::shared_ptr<Food> & food) {
     std::pair<int, int> prev_cor, pres_cor;
     _cnt_block = _cors.size() - 1;
     for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
-        prev_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
+        prev_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height), (_cors[cnt_cors].second * 90 / g_weight));
         if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnX") || ((cnt_cors != _cors.size() - 1) && (_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))//идем по оси X
             moveOnX(cnt_cors);
         else if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnY") || ((cnt_cors != _cors.size() -1) && (_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)))//идем по оси Y
             moveOnY(cnt_cors);
-        pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height) - 1, (_cors[cnt_cors].second * 90 / g_weight) - 1);
+        pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height), (_cors[cnt_cors].second * 90 / g_weight));
         if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1)){
             if (cnt_cors && (*m_map)[pres_cor.first][pres_cor.second] == -2){
+                std::cout << "map_snake_y: " <<  pres_cor.first << " map_snake_x:" << pres_cor.second << std::endl;
+                std::cout << "cors_snake_y: " << _cors[cnt_cors].first << " cors_snake_x: " << _cors[cnt_cors].second << std::endl;
+                std::cout << "food_head_y: " << food->getCorsLilFood().first << " food_head_x: " << food->getCorsLilFood().second << std::endl;
                 grow(m_map, food);//
             }
             else
@@ -334,11 +337,23 @@ void GameObj_sdl::Render(int (*&m_map)[67][90], std::shared_ptr<Food> & food) {
 }
 
 void GameObj_sdl::grow(int (*m_map)[67][90], std::shared_ptr<Food> & food) {
-    if (food->getCorsLilFood() == _cors[_cnt_block] ||
-        ){//могу какой то частичкой на него заехать
-        food->setCorsLilFood(std::make_pair(-1, -1));
-
+    if (_direction == 'd'){
+        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second + scrR.w);
+        _head_dots[1] = std::make_pair(_cors[_cnt_block].first + scrR.h, _head_dots[0].second);
     }
+    else if (_direction == 'a'){
+        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second);
+        _head_dots[1] = std::make_pair(_cors[_cnt_block].first + 16, _head_dots[0].second);
+    }
+    else if (_direction == 'w'){
+        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second);
+        _head_dots[1] = std::make_pair(_head_dots[0].first, _head_dots[1].second + 16);
+    }
+    else if (_direction == 's'){
+        _head_dots[0] = std::make_pair(_cors[_cnt_block].first + scrR.h, _cors[_cnt_block].second);
+        _head_dots[1] = std::make_pair(_head_dots[0].first, _head_dots[0].second + scrR.w);
+    }
+
 }
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }

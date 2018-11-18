@@ -27,6 +27,7 @@ private:
     std::map<int, std::pair<int, int>>_cors;
     std::map<int, SDL_Texture*> snakeTexture;
     std::string    _fr_blockX;//first block of snake
+    std::pair<int , int> _head_dots[2];
 
 public:
     GameObj_sdl(const char *texture, int x, int y, int (*)[67][90], char direction);
