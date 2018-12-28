@@ -43,7 +43,7 @@ void Game_sdl::init(const char *title, int x, int y, int w, int h, bool fullscr)
     //std::cout << dir << std::endl;
     size_t  n = dir.rfind('/');
     dir.resize(n);
-    map = std::make_shared<Map>(Map(1280, 768));//1440 | 1072
+    map = std::make_shared<Map>(Map(1440, 1072));//1440 | 1072
     //player = std::make_shared<GameObj_sdl>(GameObj_sdl((dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d'));
     player = new GameObj_sdl( (dir + "/Picture/dirt.png").c_str(), 200, 16, map->_map,'d');
     food = std::make_shared<Food>((dir + "/Picture/small_food.png").c_str(), (dir + "/Picture/big_food.png").c_str());
@@ -127,6 +127,7 @@ void Game_sdl::handleEvent() {
 
 void Game_sdl::update() {
     player->Update();
+
     food->mandatoryFood(map->_map);
 }
 
@@ -134,7 +135,8 @@ void Game_sdl::render() {
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->Render(map->_map, food);
-    food->DrawFood();
+    if (food->flag == true)
+        food->DrawFood();
     SDL_RenderPresent(renderer);
 }
 

@@ -17,7 +17,9 @@ private:
     std::pair<int, int> _cor_big_food;
     int _move_food_x;
     int _move_food_y;
+
 public:
+    bool flag;
     Food(const char *lil_food, const char *big_food);
     ~Food();
     void    mandatoryFood(int (*)[67][90]);//mandatory food on map

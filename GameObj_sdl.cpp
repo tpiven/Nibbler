@@ -74,10 +74,16 @@ GameObj_sdl::GameObj_sdl(const char *texture, int y, int x, int (*toto)[67][90],
    // _food = SDL_CreateTextureFromSurface(Game_sdl::renderer, tmp_food);
     for(int i = 0; i < 4; i++)
         (*toto)[(y * 67 / g_height) - 1][(x * 90 / 1440) + i] = -1;
-    _cors[0] = std::make_pair(y, x + 16);//tail
-    _cors[1] = std::make_pair(y, x + (16 * 2));
-    _cors[2] = std::make_pair(y, x + (16 * 3));
-    _cors[3] = std::make_pair(y, x + (16 * 4));//head
+    _cors.insert(std::make_pair(0,  std::make_pair(y, x + 16)));
+    _cors.insert(std::make_pair(1,  std::make_pair(y, x + (16*2))));
+    _cors.insert(std::make_pair(2,  std::make_pair(y, x + (16*3))));
+    _cors.insert(std::make_pair(3,  std::make_pair(y, x + (16*4))));
+
+
+//    _cors[0] = std::make_pair(y, x + 16);//tail
+//    _cors[1] = std::make_pair(y, x + (16 * 2));
+//    _cors[2] = std::make_pair(y, x + (16 * 3));
+//    _cors[3] = std::make_pair(y, x + (16 * 4));//head
 
     high = low = scrR.h = 16;
     scrR.w = 16;
@@ -271,6 +277,7 @@ void GameObj_sdl::turnOnX(size_t &cnt_cors) {
 }
 
 void GameObj_sdl::moveOnX(size_t &cnt_cors) {
+    std::cout << "CNT_CORS!!!!!!!!!!!!!! " << cnt_cors << std:: endl;
     _fr_blockX = (!cnt_cors) ? "moveOnX" : _fr_blockX;
     if (!_turn && !AreSnakeBlocksEqual(cnt_cors))
         _turn = true;
@@ -313,48 +320,161 @@ void GameObj_sdl::moveOnY(size_t & cnt_cors) {
 }
 
 void GameObj_sdl::Render(int (*&m_map)[67][90], std::shared_ptr<Food> & food) {
-    std::pair<int, int> prev_cor, pres_cor;
+    std::pair<int, int> prev_cor[2], pres_cor[2];
     _cnt_block = _cors.size() - 1;
-    for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < snakeTexture.size() ; ++cnt_s, ++cnt_cors) {
-        prev_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height), (_cors[cnt_cors].second * 90 / g_weight));
+    std::cout << " BLOKS    " << _cnt_block << std::endl;
+    for (size_t cnt_cors = 0, cnt_s = 0; cnt_s < _cors.size() ; ++cnt_s, ++cnt_cors) {
+
+        //TODO prev_cor it's pair <y,x> on double array before move
+//        get_cor(cnt_cors);
+//        prev_cor[0] = _head_dots[0];
+//        prev_cor[1] = _head_dots[1];
+
+
+
         if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnX") || ((cnt_cors != _cors.size() - 1) && (_cors[cnt_cors].first == _cors[cnt_cors + 1].first) && (_cors[cnt_cors].second != _cors[cnt_cors + 1].second)))//идем по оси X
             moveOnX(cnt_cors);
         else if ((cnt_cors == _cors.size() - 1 && _fr_blockX == "moveOnY") || ((cnt_cors != _cors.size() -1) && (_cors[cnt_cors].first !=_cors[cnt_cors + 1].first) &&(_cors[cnt_cors].second == _cors[cnt_cors + 1].second)))//идем по оси Y
             moveOnY(cnt_cors);
-        pres_cor = std::make_pair((_cors[cnt_cors].first * 67 / g_height), (_cors[cnt_cors].second * 90 / g_weight));
-        if (prev_cor != pres_cor && (!cnt_cors || cnt_cors == _cors.size() - 1)){
-            if (cnt_cors && (*m_map)[pres_cor.first][pres_cor.second] == -2){
-                std::cout << "map_snake_y: " <<  pres_cor.first << " map_snake_x:" << pres_cor.second << std::endl;
-                std::cout << "cors_snake_y: " << _cors[cnt_cors].first << " cors_snake_x: " << _cors[cnt_cors].second << std::endl;
+
+
+        //TODO pres_cor it's pair <y,x> on double array afters move
+        get_cor(cnt_cors);
+        pres_cor[0] = std::make_pair((_head_dots[0].first * 67 / g_height), (_head_dots[0].second * 90 / g_weight));
+        pres_cor[1] = std::make_pair((_head_dots[1].first * 67 / g_height), (_head_dots[1].second * 90 / g_weight));
+        std::cout << "pres_cor_y: " << pres_cor[0].first << " pres_cor_x: " << pres_cor[0].second << std:: endl;
+        //TODO new if ()
+        //if (prev_cor != pres_cor && (!cnt_cors ||
+
+            if ((cnt_cors == _cors.size() - 1) && (cnt_cors && (((*m_map)[pres_cor[0].first][pres_cor[0].second] == -2) ||  (*m_map)[pres_cor[1].first][pres_cor[1].second] == -2))){
+                std::cout << "map_snake_y: " <<  pres_cor[0].first << " map_snake_x:" << pres_cor[0].second << std::endl;
+                std::cout << "cors_snake_y: " << _cors[cnt_cors].first << " cors_snake_x: " << _cors[cnt_cors].second + 16 << std::endl;
                 std::cout << "food_head_y: " << food->getCorsLilFood().first << " food_head_x: " << food->getCorsLilFood().second << std::endl;
                 grow(m_map, food);//
             }
-            else
-                (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
-        }
-        SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
+          //  else
+            //    (!cnt_cors) ? ((*m_map)[prev_cor.first][prev_cor.second] = 0) : ((*m_map)[pres_cor.first][pres_cor.second] = -1);
+         SDL_RenderCopy(Game_sdl::renderer, snakeTexture[cnt_s], NULL, &scrR);
     }
 }
+
+void GameObj_sdl::get_cor(size_t cnt_cors) {
+
+    if (_direction == 'd') {
+        _head_dots[0] = std::make_pair(_cors[cnt_cors].first, (_cors[cnt_cors].second + 16));
+        _head_dots[1] = std::make_pair((_cors[cnt_cors].first + 16), (_cors[cnt_cors].second + 16));
+    }
+    else if (_direction == 'a') {
+        _head_dots[0] = std::make_pair(_cors[cnt_cors].first, _cors[cnt_cors].second);
+        _head_dots[1] = std::make_pair((_cors[cnt_cors].first + 16), _cors[cnt_cors].second);
+
+    }
+    else if (_direction == 'w') {
+        _head_dots[0] = std::make_pair(_cors[cnt_cors].first , _cors[cnt_cors].second);
+        _head_dots[1] = std::make_pair(_cors[cnt_cors].first, (_cors[cnt_cors].second + 16));
+
+    }
+    else if (_direction == 's') {
+        _head_dots[0] = std::make_pair((_cors[cnt_cors].first  + 16), _cors[cnt_cors].second);
+        _head_dots[1] = std::make_pair((_cors[cnt_cors].first + 16) , (_cors[cnt_cors].second + 16));
+
+    }
+
+}
+
+bool GameObj_sdl::touch(int x, int y, int z, int w, int a, int b) {
+
+    int k, c;
+
+    if (z == x) {
+        return (a == x && b > std::min(y, w) && b < std::max(y, w));
+    }
+
+    k = (w - y) / (z - x);
+    c = y - k * x;
+
+    return b == a * k + c;
+}
+
 
 void GameObj_sdl::grow(int (*m_map)[67][90], std::shared_ptr<Food> & food) {
-    if (_direction == 'd'){
-        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second + scrR.w);
-        _head_dots[1] = std::make_pair(_cors[_cnt_block].first + scrR.h, _head_dots[0].second);
-    }
-    else if (_direction == 'a'){
-        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second);
-        _head_dots[1] = std::make_pair(_cors[_cnt_block].first + 16, _head_dots[0].second);
-    }
-    else if (_direction == 'w'){
-        _head_dots[0] = std::make_pair(_cors[_cnt_block].first, _cors[_cnt_block].second);
-        _head_dots[1] = std::make_pair(_head_dots[0].first, _head_dots[1].second + 16);
-    }
-    else if (_direction == 's'){
-        _head_dots[0] = std::make_pair(_cors[_cnt_block].first + scrR.h, _cors[_cnt_block].second);
-        _head_dots[1] = std::make_pair(_head_dots[0].first, _head_dots[0].second + scrR.w);
-    }
+    if (touch(_head_dots[0].second, _head_dots[0].first, _head_dots[1].second, _head_dots[1].first, food->getCorsLilFood().second, food->getCorsLilFood().first)\
+        || touch(_head_dots[0].second, _head_dots[0].first, _head_dots[1].second, _head_dots[1].first, food->getCorsLilFood().second, food->getCorsLilFood().first + 8)\
+        || touch(_head_dots[0].second, _head_dots[0].first, _head_dots[1].second, _head_dots[1].first, food->getCorsLilFood().second + 8, food->getCorsLilFood().first)\
+        || touch(_head_dots[0].second, _head_dots[0].first, _head_dots[1].second, _head_dots[1].first, food->getCorsLilFood().second + 8, food->getCorsLilFood().first + 8))  {
+        food->flag = false;
+        std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!grow" << std::endl;
+        if (_direction == 'd') {
 
+           _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
+           _cors[4].first = _cors[3].first;
+           _cors[4].second = _cors[3].second;
+           _cors[3].first = _cors[2].first;
+           _cors[3].second = _cors[2].second;
+            _cors[2].first = _cors[1].first;
+            _cors[2].second = _cors[1].second;
+            _cors[1].first = _cors[0].first;
+            _cors[1].second = _cors[0].second;
+           _cors[0].first = _cors[1].first;
+           _cors[0].second = _cors[1].second - 16;
+            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
+            snakeTexture[4] = snakeTexture[3];
+            //  std::rotate(_cors.begin(), _cors.rbegin() + 1, _cors.rend());
+           // std::rotate(v.rbegin(), v.rbegin() + 1, v.rend());
+        }
+        else if (_direction == 'a') {
+            _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
+            _cors[4].first = _cors[3].first;
+            _cors[4].second = _cors[3].second;
+            _cors[3].first = _cors[2].first;
+            _cors[3].second = _cors[2].second;
+            _cors[2].first = _cors[1].first;
+            _cors[2].second = _cors[1].second;
+            _cors[1].first = _cors[0].first;
+            _cors[1].second = _cors[0].second;
+            _cors[0].first = _cors[1].first;
+            _cors[0].second = _cors[1].second + 16;
+            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
+            snakeTexture[4] = snakeTexture[3];
+
+
+        }
+        else if (_direction == 'w') {
+            _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
+            _cors[4].first = _cors[3].first;
+            _cors[4].second = _cors[3].second;
+            _cors[3].first = _cors[2].first;
+            _cors[3].second = _cors[2].second;
+            _cors[2].first = _cors[1].first;
+            _cors[2].second = _cors[1].second;
+            _cors[1].first = _cors[0].first;
+            _cors[1].second = _cors[0].second;
+            _cors[0].first = _cors[1].first + 16;
+            _cors[0].second = _cors[1].second;
+            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
+            snakeTexture[4] = snakeTexture[3];
+
+
+
+        }
+        else if (_direction == 's') {
+            _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
+            _cors[4].first = _cors[3].first;
+            _cors[4].second = _cors[3].second;
+            _cors[3].first = _cors[2].first;
+            _cors[3].second = _cors[2].second;
+            _cors[2].first = _cors[1].first;
+            _cors[2].second = _cors[1].second;
+            _cors[1].first = _cors[0].first;
+            _cors[1].second = _cors[0].second;
+            _cors[0].first = _cors[1].first - 16;
+            _cors[0].second = _cors[1].second;
+            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
+            snakeTexture[4] = snakeTexture[3];
+        }
+    }
 }
+
 
 void GameObj_sdl::setDirection(char dir) { _direction = dir; }
 

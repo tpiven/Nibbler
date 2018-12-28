@@ -39,6 +39,7 @@ public:
     void    setSymBuff(char sym);
     char    getSymBuff() const;
     std::pair<int, int >getHighLow() const;
+    void get_cor(size_t cnt_cors);
     void    moveOnX(size_t &);
     void    moveOnY(size_t &);
     void    turnOnX(size_t &);
@@ -46,7 +47,10 @@ public:
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
     void    grow(int (*m_map)[67][90], std::shared_ptr<Food> & food);//grow body snake
+    bool touch(int x, int y, int z, int w, int a, int b);
 };
 
 
 #endif //NIBBLER_GAMEOBJ_SDL_HPP
+
+

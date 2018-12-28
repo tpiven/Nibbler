@@ -16,5 +16,6 @@
 #include <chrono>
 #include <thread>
 #include <memory>
+#include <algorithm>
 
 #endif //NIBBLER_HEADERS_H
