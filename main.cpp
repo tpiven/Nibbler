@@ -9,7 +9,7 @@ void    obj_staff(Game_sdl &obj){
 
 int main(int argc, char* argv[]) {
     int const FPS = 60;
-    int const frameDealy = 700 / FPS;
+    int const frameDealy = 1000 / FPS;
 
     uint32_t  frameStart;
     int frameTime;

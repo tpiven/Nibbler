@@ -46,7 +46,7 @@ public:
     void    turnOnY(size_t &);
     bool AreSnakeBlocksEqual(int);
     bool  _turn;
-    void    grow(int (*m_map)[67][90], std::shared_ptr<Food> & food);//grow body snake
+    void    grow(int (*m_map)[67][90], std::shared_ptr<Food> & food, size_t cnt_cors);//grow body snake
     bool touch(int x, int y, int z, int w, int a, int b);
 };
 
