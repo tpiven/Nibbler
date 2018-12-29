@@ -404,6 +404,13 @@ void GameObj_sdl::get_cor(size_t cnt_cors) {
 
 }
 
+void GameObj_sdl::rotate() {
+    for (size_t i = _cors.size() - 1; i > 0; i--){
+        _cors[i].first = _cors[i - 1].first;
+        _cors[i].second = _cors[i - 1].second;
+    }
+}
+
 bool GameObj_sdl::touch(int x, int y, int z, int w, int a, int b) {
 
     int k, c;
@@ -428,77 +435,33 @@ void GameObj_sdl::grow(int (*m_map)[67][90], std::shared_ptr<Food> & food, size_
         std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!grow" << std::endl;
         if (_direction == 'd') {
 
-           _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
-           _cors[4].first = _cors[3].first;
-           _cors[4].second = _cors[3].second;
-           _cors[3].first = _cors[2].first;
-           _cors[3].second = _cors[2].second;
-            _cors[2].first = _cors[1].first;
-            _cors[2].second = _cors[1].second;
-            _cors[1].first = _cors[0].first;
-            _cors[1].second = _cors[0].second;
-           _cors[0].first = _cors[1].first;
+            _cors.insert(std::make_pair(_cors.size(),  std::make_pair(0, 0)));
+            rotate();
+            _cors[0].first = _cors[1].first;
            _cors[0].second = _cors[1].second - 16;
-            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
-            snakeTexture[4] = snakeTexture[3];
-            snakeTexture[3] = snakeTexture[2];
-            (*m_map)[food->getCorsLilFood().first * 67 / g_height][food->getCorsLilFood().second * 90 / g_weight] = 0;
-            //std::rotate(_cors.begin(), _cors.rbegin() + 1, _cors.rend());
-           // std::rotate(v.rbegin(), v.rbegin() + 1, v.rend());
         }
         else if (_direction == 'a') {
             _cors.insert(std::make_pair(_cors.size(),  std::make_pair(0, 0)));
-            _cors[4].first = _cors[3].first;
-            _cors[4].second = _cors[3].second;
-            _cors[3].first = _cors[2].first;
-            _cors[3].second = _cors[2].second;
-            _cors[2].first = _cors[1].first;
-            _cors[2].second = _cors[1].second;
-            _cors[1].first = _cors[0].first;
-            _cors[1].second = _cors[0].second;
+            rotate();
             _cors[0].first = _cors[1].first;
             _cors[0].second = _cors[1].second + 16;
-            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
-            snakeTexture[4] = snakeTexture[3];
-            (*m_map)[food->getCorsLilFood().first * 67 / g_height][food->getCorsLilFood().second * 90 / g_weight] = 0;
-
-
         }
         else if (_direction == 'w') {
-            _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
-            _cors[4].first = _cors[3].first;
-            _cors[4].second = _cors[3].second;
-            _cors[3].first = _cors[2].first;
-            _cors[3].second = _cors[2].second;
-            _cors[2].first = _cors[1].first;
-            _cors[2].second = _cors[1].second;
-            _cors[1].first = _cors[0].first;
-            _cors[1].second = _cors[0].second;
+            _cors.insert(std::make_pair(_cors.size(),  std::make_pair(0, 0)));
+            rotate();
             _cors[0].first = _cors[1].first + 16;
             _cors[0].second = _cors[1].second;
-            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
-            snakeTexture[4] = snakeTexture[3];
-            (*m_map)[food->getCorsLilFood().first * 67 / g_height][food->getCorsLilFood().second * 90 / g_weight] = 0;
-
-
-
         }
         else if (_direction == 's') {
-            _cors.insert(std::make_pair(4,  std::make_pair(0, 0)));
-            _cors[4].first = _cors[3].first;
-            _cors[4].second = _cors[3].second;
-            _cors[3].first = _cors[2].first;
-            _cors[3].second = _cors[2].second;
-            _cors[2].first = _cors[1].first;
-            _cors[2].second = _cors[1].second;
-            _cors[1].first = _cors[0].first;
-            _cors[1].second = _cors[0].second;
+            _cors.insert(std::make_pair(_cors.size(),  std::make_pair(0, 0)));
+            rotate();
             _cors[0].first = _cors[1].first - 16;
             _cors[0].second = _cors[1].second;
-            (*m_map)[(_cors[0].first * 67 / g_height) - 1][(_cors[0].second * 90 / 1440)] = -1;
-            snakeTexture[4] = snakeTexture[3];
-            (*m_map)[food->getCorsLilFood().first * 67 / g_height][food->getCorsLilFood().second * 90 / g_weight] = 0;
         }
+        (*m_map)[(_cors[0].first * 67 / g_height)][(_cors[0].second * 90 / 1440)] = -1;
+        snakeTexture[cnt_cors + 1] = snakeTexture[cnt_cors];
+        snakeTexture[cnt_cors] = snakeTexture[cnt_cors- 1];
+        (*m_map)[food->getCorsLilFood().first * 67 / g_height][food->getCorsLilFood().second * 90 / g_weight] = 0;
     }
 }
 
